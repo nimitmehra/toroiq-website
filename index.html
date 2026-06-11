@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toroIQ — India Markets Brief</title>
+<meta name="description" content="Plain-English daily NSE brief. What moved, and why. No tips, no calls. Read it on Substack, hear it on Spotify in English and Hindi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-1:#0d3b3e;
+    --green-2:#114e51;
+    --gold:#ffc466;
+    --cream:#f4efe3;
+    --up:#5fcb97;
+    --down:#e8806a;
+    --ink:#0a2c2e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk',sans-serif;
+    background:linear-gradient(160deg,var(--green-1),var(--green-2) 70%,#0f4548);
+    color:var(--cream);
+    line-height:1.6;
+    min-height:100vh;
+  }
+  h1,h2,h3,.inter{font-family:'Inter',sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- nav ---------- */
+  nav{padding:28px 0;}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .mark{font-family:'Inter';font-weight:900;font-size:26px;letter-spacing:-1px;color:#fff;text-decoration:none;}
+  .mark .iq{color:var(--gold);}
+  nav .tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,239,227,.55);font-weight:700;}
+
+  /* ---------- hero ---------- */
+  header{position:relative;overflow:hidden;padding:72px 0 88px;text-align:center;}
+  header .circle{position:absolute;border-radius:50%;background:rgba(255,196,102,.08);pointer-events:none;}
+  header .c1{width:520px;height:520px;top:-220px;right:-160px;}
+  header .c2{width:320px;height:320px;bottom:-180px;left:-100px;background:rgba(255,196,102,.05);}
+  header .label{font-size:13px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);}
+  header h1{font-weight:900;font-size:clamp(38px,7vw,64px);letter-spacing:-2px;color:#fff;margin-top:16px;line-height:1.05;}
+  header .pos{font-size:clamp(17px,2.6vw,21px);color:rgba(244,239,227,.85);margin:22px auto 0;max-width:560px;}
+  header .pos b{color:#fff;font-weight:700;}
+  .stripe{width:72px;height:7px;background:var(--gold);margin:30px auto;border-radius:2px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
+  .btn{display:inline-block;font-family:'Inter';font-weight:700;font-size:16px;text-decoration:none;border-radius:12px;padding:15px 28px;transition:transform .15s ease, box-shadow .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 10px 30px rgba(255,196,102,.25);}
+  .btn-ghost{border:2px solid rgba(244,239,227,.35);color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--gold);color:#fff;}
+  header .since{margin-top:26px;font-size:13px;color:rgba(244,239,227,.5);letter-spacing:1px;}
+
+  /* ---------- sections ---------- */
+  section{padding:56px 0;}
+  h2{font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:12px;}
+
+  /* what we do */
+  .props{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .prop{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 26px;}
+  .prop h3{font-weight:900;font-size:20px;letter-spacing:-.5px;color:#fff;}
+  .prop h3 .accent{color:var(--gold);}
+  .prop p{margin-top:10px;font-size:15px;color:rgba(244,239,227,.78);}
+
+  /* sample line */
+  .sample{margin-top:22px;background:rgba(10,44,46,.55);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:20px 24px;font-size:15px;color:rgba(244,239,227,.85);}
+  .sample .up{color:var(--up);font-weight:700;}
+  .sample .down{color:var(--down);font-weight:700;}
+  .sample .src{display:block;margin-top:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,239,227,.45);}
+
+  /* channels */
+  .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .ch{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+  .ch:hover{transform:translateY(-3px);border-color:rgba(255,196,102,.6);background:rgba(255,255,255,.08);}
+  .ch .kind{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+  .ch h3{font-weight:900;font-size:21px;letter-spacing:-.5px;color:#fff;margin-top:8px;}
+  .ch p{margin-top:8px;font-size:14px;color:rgba(244,239,227,.75);}
+  .ch .go{display:inline-block;margin-top:14px;font-family:'Inter';font-weight:700;font-size:14px;color:var(--gold);}
+  .ch.hub{grid-column:1/-1;background:linear-gradient(135deg,rgba(255,196,102,.14),rgba(255,196,102,.05));border-color:rgba(255,196,102,.45);}
+  .ch.hub h3{font-size:26px;}
+  .ch .alt{margin-top:10px;font-size:13px;color:rgba(244,239,227,.6);}
+  .ch .alt a{color:var(--gold);text-decoration:none;font-weight:700;}
+  .ch .alt a:hover{text-decoration:underline;}
+
+  /* roadmap */
+  .road p{max-width:720px;font-size:16px;color:rgba(244,239,227,.85);}
+  .road p + p{margin-top:14px;}
+  .road b{color:#fff;}
+
+  /* footer */
+  footer{margin-top:40px;padding:44px 0 56px;background:rgba(10,44,46,.6);border-top:1px solid rgba(255,255,255,.1);}
+  footer .mark{font-size:22px;}
+  footer .disc{margin-top:16px;font-size:13px;color:rgba(244,239,227,.6);max-width:720px;}
+  footer .row{margin-top:22px;display:flex;gap:22px;flex-wrap:wrap;font-size:14px;}
+  footer .row a{color:var(--gold);text-decoration:none;font-weight:700;}
+  footer .row a:hover{text-decoration:underline;}
+  footer .copy{margin-top:24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,239,227,.4);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#">toro<span class="iq">IQ</span></a>
+    <div class="tag">India Markets Brief</div>
+  </div>
+</nav>
+
+<header>
+  <div class="circle c1"></div>
+  <div class="circle c2"></div>
+  <div class="wrap">
+    <div class="label">Every market day · After the close</div>
+    <h1>The Indian market,<br>explained in plain English.</h1>
+    <p class="pos">A free daily brief on the NSE. <b>What moved, and why</b> — verified, sourced, and written for humans. <b>No tips. No calls.</b></p>
+    <div class="stripe"></div>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://toroiq.substack.com/" target="_blank" rel="noopener">Read the Daily Brief</a>
+      <a class="btn btn-ghost" href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8" target="_blank" rel="noopener">Listen on Spotify</a>
+    </div>
+    <div class="since">Free · English &amp; हिंदी · Read it, hear it, or watch it</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What we do</h2>
+    <div class="props">
+      <div class="prop">
+        <h3>What <span class="accent">moved</span></h3>
+        <p>Nifty, the rupee, bond yields, and the stocks that actually mattered today — with the real numbers, anchored to the 3:30 PM close.</p>
+      </div>
+      <div class="prop">
+        <h3>Why it <span class="accent">moved</span></h3>
+        <p>Every move traced to its actual cause, and every claim verified across independent sources before it reaches you. If we can't verify it, we say so.</p>
+      </div>
+      <div class="prop">
+        <h3>No tips. <span class="accent">No calls.</span></h3>
+        <p>We don't tell you what to buy or sell. We explain what happened so you understand the market — the rest is your decision.</p>
+      </div>
+    </div>
+    <div class="sample">
+      "Nifty 50 23,214.95 (<span class="down">−0.12%</span>); rupee <span class="up">+0.45%</span> stronger at ₹95.25; Brent $91.91. Here's what actually drove it…"
+      <span class="src">— from the daily brief, 10 June 2026</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where to find us</h2>
+    <div class="channels">
+      <a class="ch hub" href="https://toroiq.substack.com/" target="_blank" rel="noopener">
+        <div class="kind">Substack · The hub</div>
+        <h3>The Daily Brief</h3>
+        <p>The full written brief, free, every market day. Start here — everything else flows from it.</p>
+        <span class="go">toroiq.substack.com →</span>
+      </a>
+      <a class="ch" href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8" target="_blank" rel="noopener">
+        <div class="kind">Podcast · English</div>
+        <h3>India Markets Brief</h3>
+        <p>The day's brief as a short podcast — listen on your commute.</p>
+        <span class="go">Listen on Spotify →</span>
+      </a>
+      <a class="ch" href="https://open.spotify.com/show/033uV72hslyoX5p6bmvBz4" target="_blank" rel="noopener">
+        <div class="kind">Podcast · हिंदी</div>
+        <h3>India Markets Brief — हिंदी</h3>
+        <p>वही brief, हिंदी में। Same stories, same numbers, in Hindi.</p>
+        <span class="go">Listen on Spotify →</span>
+        <div class="alt">Also on <a href="https://podcasts.apple.com/us/podcast/id1896896732" target="_blank" rel="noopener">Apple Podcasts</a></div>
+      </a>
+      <a class="ch" href="https://x.com/toroiq" target="_blank" rel="noopener">
+        <div class="kind">X / Twitter</div>
+        <h3>@toroiq</h3>
+        <p>The day's key numbers and stories, as they're published.</p>
+        <span class="go">Follow on X →</span>
+      </a>
+      <a class="ch" href="https://instagram.com/nimitmehra" target="_blank" rel="noopener">
+        <div class="kind">Instagram</div>
+        <h3>@nimitmehra</h3>
+        <p>Daily reels — the brief in four cards, under a minute.</p>
+        <span class="go">Watch on Instagram →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap road">
+    <h2>Where this is going</h2>
+    <p>toroIQ starts with one promise: <b>one honest, verified brief on the Indian market, every market day</b> — written, spoken, and visual, in English and Hindi.</p>
+    <p>From that base we're building deeper: company research, sector explainers, and tools that help you understand <b>why</b> markets do what they do. Always plain English. Always sourced. Never tips.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="mark" href="#">toro<span class="iq">IQ</span></a>
+    <p class="disc">toroIQ publishes educational market commentary, not investment advice. We give no buy or sell recommendations, no price targets, no tips, and no calls. SEBI Research Analyst registration is in process. Markets carry risk — please make your own decisions or consult a registered adviser.</p>
+    <div class="row">
+      <a href="mailto:hello@toroiq.com">hello@toroiq.com</a>
+      <a href="https://toroiq.substack.com/" target="_blank" rel="noopener">Substack</a>
+      <a href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8" target="_blank" rel="noopener">Podcast</a>
+      <a href="https://x.com/toroiq" target="_blank" rel="noopener">X</a>
+      <a href="https://instagram.com/nimitmehra" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="copy">© 2026 toroIQ · India Markets Brief</div>
+  </div>
+</footer>
+
+</body>
+</html>
