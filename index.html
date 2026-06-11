@@ -57,8 +57,8 @@
   header .since{margin-top:26px;font-size:13px;color:rgba(244,239,227,.5);letter-spacing:1px;}
 
   /* ---------- sections ---------- */
-  section{padding:56px 0;}
-  h2{font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:12px;}
+  section{padding:68px 0;}
+  h2{font-size:14px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:14px;}
 
   /* what we do */
   .props{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
@@ -74,25 +74,22 @@
   .sample .src{display:block;margin-top:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,239,227,.45);}
 
   /* channels */
-  .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
-  .ch{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+  .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:30px;}
+  .ch{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:38px 36px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
   .ch:hover{transform:translateY(-3px);border-color:rgba(255,196,102,.6);background:rgba(255,255,255,.08);}
-  .ch .kind{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-  .ch .khead{display:flex;align-items:center;gap:10px;}
-  .cicon{width:22px;height:22px;flex-shrink:0;display:inline-flex;}
+  .ch .kind{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+  .ch .khead{display:flex;align-items:center;gap:12px;}
+  .cicon{width:26px;height:26px;flex-shrink:0;display:inline-flex;}
   .cicon svg{width:100%;height:100%;fill:var(--gold);}
-  .cicon.sm{width:15px;height:15px;vertical-align:-2px;}
-  .ch iframe{display:block;width:100%;border:0;border-radius:12px;margin-top:16px;background:rgba(0,0,0,.2);}
+  .cicon.sm{width:16px;height:16px;vertical-align:-2px;}
+  .ch iframe{display:block;width:100%;border:0;border-radius:14px;margin-top:22px;background:rgba(0,0,0,.2);}
   .ch iframe.yt{aspect-ratio:16/9;}
-  .latest{display:inline-block;margin-top:14px;font-size:14px;color:var(--cream);background:rgba(255,255,255,.07);border:1px solid rgba(255,196,102,.25);border-radius:10px;padding:10px 16px;text-decoration:none;}
-  .latest:hover{border-color:var(--gold);}
-  .latest .l-tag{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:11px;text-transform:uppercase;margin-right:10px;}
-  .ch h3{font-weight:900;font-size:21px;letter-spacing:-.5px;color:#fff;margin-top:8px;}
-  .ch p{margin-top:8px;font-size:14px;color:rgba(244,239,227,.75);}
-  .ch .go{display:inline-block;margin-top:14px;font-family:'Inter';font-weight:700;font-size:14px;color:var(--gold);}
+  .ch h3{font-weight:900;font-size:25px;letter-spacing:-.5px;color:#fff;margin-top:12px;}
+  .ch p{margin-top:12px;font-size:16px;color:rgba(244,239,227,.78);}
+  .ch .go{display:inline-block;margin-top:18px;font-family:'Inter';font-weight:700;font-size:16px;color:var(--gold);}
   .ch.hub{grid-column:1/-1;background:linear-gradient(135deg,rgba(255,196,102,.14),rgba(255,196,102,.05));border-color:rgba(255,196,102,.45);}
-  .ch.hub h3{font-size:26px;}
-  .ch .alt{margin-top:10px;font-size:13px;color:rgba(244,239,227,.6);}
+  .ch.hub h3{font-size:30px;}
+  .ch .alt{margin-top:16px;font-size:14px;color:rgba(244,239,227,.6);}
   .ch .alt a{color:var(--gold);text-decoration:none;font-weight:700;}
   .ch .alt a:hover{text-decoration:underline;}
 
@@ -164,16 +161,15 @@
   <div class="wrap">
     <h2>Where to find us</h2>
     <div class="channels">
-      <div class="ch hub">
+      <a class="ch hub" href="https://toroiq.substack.com/" target="_blank" rel="noopener">
         <div class="khead">
           <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></span>
           <div class="kind">Substack · The hub</div>
         </div>
         <h3>The Daily Brief</h3>
         <p>The full written brief, free, every market day. Start here — everything else flows from it.</p>
-        <a class="latest" id="latest-post" href="https://toroiq.substack.com/" target="_blank" rel="noopener"><span class="l-tag">Latest</span><span id="latest-title">NSE Daily Market Brief — June 10</span> →</a>
-        <div class="alt"><a href="https://toroiq.substack.com/" target="_blank" rel="noopener">toroiq.substack.com</a></div>
-      </div>
+        <span class="go">Read the latest brief →</span>
+      </a>
       <div class="ch">
         <div class="khead">
           <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
@@ -256,16 +252,5 @@
   </div>
 </footer>
 
-<script>
-  fetch('latest.json')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d && d.title && d.link) {
-        document.getElementById('latest-title').textContent = d.title;
-        document.getElementById('latest-post').href = d.link;
-      }
-    })
-    .catch(function(){ /* keep the static fallback */ });
-</script>
 </body>
 </html>
