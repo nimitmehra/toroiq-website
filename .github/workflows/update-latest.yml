@@ -17,11 +17,14 @@ jobs:
 
       - name: Fetch latest post from Substack RSS
         run: |
+          curl -sf --max-time 30 \
+            -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36' \
+            -H 'Accept: application/rss+xml,application/xml;q=0.9,*/*;q=0.8' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
+            'https://toroiq.substack.com/feed' -o feed.xml
           python3 - <<'EOF'
-          import json, urllib.request, xml.etree.ElementTree as ET
-          req = urllib.request.Request('https://toroiq.substack.com/feed',
-                                       headers={'User-Agent': 'Mozilla/5.0'})
-          root = ET.fromstring(urllib.request.urlopen(req, timeout=30).read())
+          import json, xml.etree.ElementTree as ET
+          root = ET.parse('feed.xml').getroot()
           item = root.find('.//item')
           data = {'title': (item.findtext('title') or '').strip(),
                   'link':  (item.findtext('link') or '').strip(),
