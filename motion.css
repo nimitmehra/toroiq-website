@@ -17,7 +17,12 @@
   min-height: 30px;
 }
 .motion-controls button:disabled { cursor: default; }
-.travel-pulse { fill: #72994e; stroke: #e1efcc; stroke-width: 4px; opacity: 0; }
+.travel-pulse { fill: #497e37; stroke: #dcecc4; stroke-width: 5px; opacity: 0; }
+.signal-route { fill: none; stroke: #719958; stroke-width: 2.5px; stroke-dasharray: 8 17; marker-end: none; }
+.scan-ring { fill: none; stroke: #86a962; stroke-width: 2px; stroke-dasharray: 32 12 3 12; opacity: .7; }
+.agent-activity { display: flex; gap: 9px; align-items: center; margin: 14px 18px 0; padding: 10px 12px; border: 1px solid #d9e5cd; border-radius: 5px; background: #eef4e6; color: #36562e; font: 10px var(--mono); min-height: 37px; }
+.activity-light { width: 7px; height: 7px; border-radius: 50%; background: #659447; box-shadow: 0 0 0 4px #deebd1; flex-shrink: 0; }
+.activity-tag { font-size: 7px; letter-spacing: .07em; color: #657b57; margin-left: auto; }
 .graph-node rect, .graph-center rect, .graph-insight { transition: fill 1s ease, stroke 1s ease, background 1s ease, border-color 1s ease; }
 .graph-window[data-phase="0"] .source-node rect { stroke: #91ab76; fill: #f0f5e6; }
 .graph-window[data-phase="1"] .graph-node rect { stroke: #9db887; }
@@ -28,11 +33,13 @@
 #seed-summary { min-height: 34px; }
 #selected-seed { text-align: left; margin-block: 8px 15px; }
 @media (max-width: 430px) {
+  .agent-activity { margin-inline: 14px; font-size: 8px; gap: 8px; padding-inline: 10px; }
+  .activity-tag { font-size: 6px; letter-spacing: 0; }
   .motion-controls { padding-inline: 14px; gap: 7px; }
   .motion-controls .mono { font-size: 7px; }
   .motion-controls button { font-size: 8px; padding-inline: 7px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .travel-pulse { display: none; }
+  .travel-pulse, .scan-ring, .signal-route { display: none; }
   .graph-node rect, .graph-center rect, .graph-insight { transition: none; }
 }

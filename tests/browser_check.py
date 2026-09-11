@@ -13,9 +13,10 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = sys.argv[1] if len(sys.argv) > 1 else 'http://127.0.0.1:8766/'
+ENGINE = sys.argv[2] if len(sys.argv) > 2 else 'firefox'
 
 with sync_playwright() as p:
-    browser = p.firefox.launch()
+    browser = getattr(p, ENGINE).launch()
     context = browser.new_context(viewport={'width': 1440, 'height': 1050}, accept_downloads=True)
     page = context.new_page()
     errors = []
@@ -35,6 +36,11 @@ with sync_playwright() as p:
             assert (ROOT / unquote(parts.path)).exists(), href
 
     # The illustration must actually advance, pause and respect motion preferences.
+    page.wait_for_function('Number(document.querySelector(".travel-pulse").style.opacity) > 0.2', timeout=2000)
+    first_x = page.locator('.travel-pulse').first.get_attribute('cx')
+    page.wait_for_timeout(250)
+    assert page.locator('.travel-pulse').first.get_attribute('cx') != first_x, 'No immediate movement'
+    assert page.locator('.agent-activity').is_visible()
     page.wait_for_function('document.querySelector(".graph-window").dataset.phase === "1"', timeout=7000)
     page.wait_for_function('Number(document.querySelector(".travel-pulse").style.opacity) > 0.2', timeout=2000)
     page.locator('#motion-toggle').click()
@@ -83,6 +89,7 @@ with sync_playwright() as p:
     assert page.locator('#question').evaluate('(e) => !e.checkValidity()')
     page.locator('#question').fill('Which dependencies deserve a closer look?')
     page.locator('#copy-config').click()
+    page.wait_for_function('document.querySelector("#config-status").textContent.length > 0')
     assert page.locator('#config-status').inner_text()
     page.locator('[data-market="macro"]').click()
     page.locator('#cadence').select_option('on-demand')
