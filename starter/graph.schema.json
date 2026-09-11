@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://toroiq.com/starter/graph.schema.json",
+  "title": "toroIQ experimental demo graph v0.1.0",
+  "description": "Demo interchange schema, not the schema of the existing private trackers. Endpoint integrity and evidence references need additional validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode", "market", "generated_at", "research_question", "disclaimer", "cadence", "nodes", "edges", "sources"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "mode": {"const": "demo"},
+    "market": {"enum": ["macro", "nse", "us", "crypto"]},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "research_question": {"type": "string", "minLength": 1, "maxLength": 240},
+    "disclaimer": {"type": "string"},
+    "cadence": {"type": "object", "additionalProperties": false, "required": ["requested", "active", "note"], "properties": {"requested": {"enum": ["on-demand", "daily", "weekly"]}, "active": {"const": false}, "note": {"type": "string"}}},
+    "nodes": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["id", "type", "label", "observations"], "properties": {
+      "id": {"type": "string", "minLength": 1}, "type": {"enum": ["observation", "research_subject"]}, "label": {"type": "string", "minLength": 1},
+      "observations": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["metric", "previous", "value", "unit", "change_pct", "observed_at", "source_id", "verification"], "properties": {"metric": {"type": "string"}, "previous": {"type": "number"}, "value": {"type": "number"}, "unit": {"type": "string"}, "change_pct": {"type": "number"}, "observed_at": {"type": "string", "format": "date-time"}, "source_id": {"type": "string"}, "verification": {"const": "synthetic"}}}}
+    }}},
+    "edges": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["id", "from", "to", "relation", "mechanism", "status", "evidence_ids"], "properties": {
+      "id": {"type": "string"}, "from": {"type": "string"}, "to": {"type": "string"}, "relation": {"const": "may_affect"}, "mechanism": {"type": "string"}, "status": {"const": "hypothesis"}, "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+    }}},
+    "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["id", "kind", "reference", "note"], "properties": {"id": {"type": "string"}, "kind": {"const": "synthetic"}, "reference": {"type": "string"}, "note": {"type": "string"}}}}
+  }
+}

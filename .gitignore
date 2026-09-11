@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+demo-output/
+my-first-graph/
+research.config.json
+.DS_Store

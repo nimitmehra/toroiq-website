@@ -1,0 +1,8 @@
+{
+  "schema_version": "0.1.0",
+  "mode": "demo",
+  "market": "macro",
+  "cadence": "on-demand",
+  "research_question": "Which dependencies deserve a closer look?",
+  "review_rule": {"field": "change_pct", "operator": "gte", "threshold": 10}
+}

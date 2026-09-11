@@ -1,260 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>toroIQ — India Markets Brief</title>
-<meta name="description" content="Plain-English daily NSE brief. What moved, and why. No tips, no calls. Read it on Substack, hear it on Spotify in English and Hindi.">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --green-1:#0d3b3e;
-    --green-2:#114e51;
-    --gold:#ffc466;
-    --cream:#f4efe3;
-    --up:#5fcb97;
-    --down:#e8806a;
-    --ink:#0a2c2e;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Space Grotesk',sans-serif;
-    background:linear-gradient(160deg,var(--green-1),var(--green-2) 70%,#0f4548);
-    color:var(--cream);
-    line-height:1.6;
-    min-height:100vh;
-  }
-  h1,h2,h3,.inter{font-family:'Inter',sans-serif;}
-  a{color:inherit;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
-
-  /* ---------- nav ---------- */
-  nav{padding:28px 0;}
-  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
-  .mark{font-family:'Inter';font-weight:900;font-size:26px;letter-spacing:-1px;color:#fff;text-decoration:none;}
-  .mark .iq{color:var(--gold);}
-  nav .tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,239,227,.55);font-weight:700;}
-
-  /* ---------- hero ---------- */
-  header{position:relative;overflow:hidden;padding:72px 0 88px;text-align:center;}
-  header .circle{position:absolute;border-radius:50%;background:rgba(255,196,102,.08);pointer-events:none;}
-  header .c1{width:520px;height:520px;top:-220px;right:-160px;}
-  header .c2{width:320px;height:320px;bottom:-180px;left:-100px;background:rgba(255,196,102,.05);}
-  header .label{font-size:13px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--gold);}
-  header h1{font-weight:900;font-size:clamp(38px,7vw,64px);letter-spacing:-2px;color:#fff;margin-top:16px;line-height:1.05;}
-  header .pos{font-size:clamp(17px,2.6vw,21px);color:rgba(244,239,227,.85);margin:22px auto 0;max-width:560px;}
-  header .pos b{color:#fff;font-weight:700;}
-  .stripe{width:72px;height:7px;background:var(--gold);margin:30px auto;border-radius:2px;}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
-  .btn{display:inline-block;font-family:'Inter';font-weight:700;font-size:16px;text-decoration:none;border-radius:12px;padding:15px 28px;transition:transform .15s ease, box-shadow .15s ease;}
-  .btn:hover{transform:translateY(-2px);}
-  .btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 10px 30px rgba(255,196,102,.25);}
-  .btn-ghost{border:2px solid rgba(244,239,227,.35);color:var(--cream);}
-  .btn-ghost:hover{border-color:var(--gold);color:#fff;}
-  header .since{margin-top:26px;font-size:13px;color:rgba(244,239,227,.5);letter-spacing:1px;}
-
-  /* ---------- sections ---------- */
-  section{padding:68px 0;}
-  h2{font-size:14px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:14px;}
-
-  /* what we do */
-  .props{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
-  .prop{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 26px;}
-  .prop h3{font-weight:900;font-size:20px;letter-spacing:-.5px;color:#fff;}
-  .prop h3 .accent{color:var(--gold);}
-  .prop p{margin-top:10px;font-size:15px;color:rgba(244,239,227,.78);}
-
-  /* sample line */
-  .sample{margin-top:22px;background:rgba(10,44,46,.55);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:20px 24px;font-size:15px;color:rgba(244,239,227,.85);}
-  .sample .up{color:var(--up);font-weight:700;}
-  .sample .down{color:var(--down);font-weight:700;}
-  .sample .src{display:block;margin-top:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,239,227,.45);}
-
-  /* channels */
-  .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:30px;}
-  .ch{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:38px 36px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-  .ch:hover{transform:translateY(-3px);border-color:rgba(255,196,102,.6);background:rgba(255,255,255,.08);}
-  .ch .kind{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-  .ch .khead{display:flex;align-items:center;gap:12px;}
-  .cicon{width:26px;height:26px;flex-shrink:0;display:inline-flex;}
-  .cicon svg{width:100%;height:100%;fill:var(--gold);}
-  .cicon.sm{width:16px;height:16px;vertical-align:-2px;}
-  .ch iframe{display:block;width:100%;border:0;border-radius:14px;margin-top:22px;background:rgba(0,0,0,.2);}
-  .ch iframe.yt{aspect-ratio:16/9;}
-  .ch h3{font-weight:900;font-size:25px;letter-spacing:-.5px;color:#fff;margin-top:12px;}
-  .ch p{margin-top:12px;font-size:16px;color:rgba(244,239,227,.78);}
-  .ch .go{display:inline-block;margin-top:18px;font-family:'Inter';font-weight:700;font-size:16px;color:var(--gold);text-decoration:none;}
-  .ch.hub{grid-column:1/-1;background:linear-gradient(135deg,rgba(255,196,102,.14),rgba(255,196,102,.05));border-color:rgba(255,196,102,.45);}
-  .ch.hub h3{font-size:30px;}
-  .ch .alt{margin-top:16px;font-size:14px;color:rgba(244,239,227,.6);}
-  .ch .alt a{color:var(--gold);text-decoration:none;font-weight:700;}
-  .ch .alt a:hover{text-decoration:underline;}
-
-  /* roadmap */
-  .road p{max-width:720px;font-size:16px;color:rgba(244,239,227,.85);}
-  .road p + p{margin-top:14px;}
-  .road b{color:#fff;}
-
-  /* footer */
-  footer{margin-top:40px;padding:44px 0 56px;background:rgba(10,44,46,.6);border-top:1px solid rgba(255,255,255,.1);}
-  footer .mark{font-size:22px;}
-  footer .disc{margin-top:16px;font-size:13px;color:rgba(244,239,227,.6);max-width:720px;}
-  footer .row{margin-top:22px;display:flex;gap:22px;flex-wrap:wrap;font-size:14px;}
-  footer .row a{color:var(--gold);text-decoration:none;font-weight:700;}
-  footer .row a:hover{text-decoration:underline;}
-  footer .copy{margin-top:24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(244,239,227,.4);}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>toroIQ — Financial research graphs for your agents</title>
+  <meta name="description" content="Explore macro, NSE, US equity and crypto research graphs. Build your own agent-driven watchlists, signals and research workflows with the toroIQ open-source starter.">
+  <meta name="theme-color" content="#163e36">
+  <link rel="canonical" href="https://toroiq.com/">
+  <meta property="og:title" content="toroIQ — Your markets. Your graph. Your agent.">
+  <meta property="og:description" content="An independent project exploring personalized financial research graphs. Explore the work, try the open-source starter, and make it your own.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toroiq.com/">
+  <meta property="og:image" content="https://toroiq.com/favicon-512.png">
+  <link rel="icon" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="alternate" type="application/json" href="projects.json" title="toroIQ project manifest">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <noscript><style>#config-form{display:none}</style></noscript>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="wordmark" href="/" aria-label="toroIQ home">toro<span>IQ</span><i aria-hidden="true"></i></a>
+      <div class="nav-links"><a href="#projects">The projects</a><a href="#build">Build your graph</a><a href="#journal">Watch &amp; read</a></div>
+      <a class="nav-github" href="https://github.com/nimitmehra/toroiq-website/tree/main/starter">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> An independent research project</p>
+        <h1 id="hero-title">Your markets.<br>Your graph.<br><em>Your agent.</em></h1>
+        <p class="hero-description">Give your financial research a memory. Connect companies, macro forces and crypto networks in a graph your agent can build on.</p>
+        <p class="hero-secondary">Your watchlist. Your questions. Your cadence.<br>Surface connections worth investigating—not another feed to scroll.</p>
+        <div class="actions"><a class="button primary" href="#projects">Explore the graphs <span aria-hidden="true">↗</span></a><a class="text-link" href="#build">Make it your own <span aria-hidden="true">→</span></a></div>
+        <div class="hero-note"><span aria-hidden="true">⌘</span> Built for agents. Inspectable by people.</div>
+      </div>
+      <div class="graph-window">
+        <div class="window-bar"><span><span class="status-dot"></span> A connected research view</span><span class="mono">EXAMPLE / 01</span></div>
+        <div class="graph-tabs" role="group" aria-label="Choose an illustrative graph"><button type="button" data-market="macro" aria-pressed="true">Macro</button><button type="button" data-market="nse" aria-pressed="false">NSE</button><button type="button" data-market="us" aria-pressed="false">US equities</button><button type="button" data-market="crypto" aria-pressed="false">Crypto</button></div>
+        <svg class="network" viewBox="0 0 580 370" role="img" aria-labelledby="network-title network-desc">
+          <title id="network-title">Illustrative macro research graph</title><desc id="network-desc">Shipping disruption connects to freight costs and input costs, which connect to a watchlist. These are research hypotheses, not current market signals.</desc>
+          <defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#dce3dc"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8baba0"/></marker></defs>
+          <rect width="580" height="370" fill="url(#dots)"/>
+          <g fill="none" stroke="#91aea1" stroke-width="1.5" marker-end="url(#arrow)"><path d="M155 85 C250 85 165 183 241 183"/><path d="M155 281 C240 281 175 198 241 198"/><path d="M339 183 C420 183 340 82 424 82"/><path d="M339 199 C410 199 350 280 424 280"/><path d="M340 189 H477 V140" stroke-dasharray="4 5"/></g>
+          <g font-family="ui-monospace, monospace" font-size="10" fill="#697b72"><text x="184" y="116" id="edge-one">transmits through</text><text x="361" y="132" id="edge-two">may affect</text><text x="355" y="249" id="edge-three">watch for change</text></g>
+          <g class="graph-node"><rect x="35" y="56" width="132" height="58" rx="8"/><circle cx="53" cy="75" r="3" fill="#be8651"/><text class="node-type" x="64" y="79" id="type-one">EVENT</text><text class="node-label" x="49" y="100" id="node-one">Shipping disruption</text></g>
+          <g class="graph-node"><rect x="35" y="251" width="132" height="58" rx="8"/><circle cx="53" cy="270" r="3" fill="#769598"/><text class="node-type" x="64" y="274" id="type-two">OBSERVATION</text><text class="node-label" x="49" y="295" id="node-two">Freight costs</text></g>
+          <g class="graph-center"><circle cx="290" cy="190" r="65" fill="none" stroke="#d7e2d7" stroke-dasharray="3 5"/><rect x="232" y="159" width="116" height="62" rx="9" fill="#163e36"/><text x="290" y="184" text-anchor="middle" fill="#a9c7b6" class="node-type">RESEARCH CONTEXT</text><text x="290" y="205" text-anchor="middle" fill="#fff" class="center-label" id="node-center">Input costs</text></g>
+          <g class="graph-node"><rect x="418" y="53" width="139" height="58" rx="8"/><circle cx="435" cy="72" r="3" fill="#729b78"/><text class="node-type" x="446" y="76" id="type-three">EXPOSURE</text><text class="node-label" x="431" y="97" id="node-three">Operating margins</text></g>
+          <g class="graph-node"><rect x="418" y="251" width="139" height="58" rx="8"/><circle cx="435" cy="270" r="3" fill="#729b78"/><text class="node-type" x="446" y="274">YOUR WORKSPACE</text><text class="node-label" x="431" y="295" id="node-four">Your watchlist</text></g>
+          <g><circle cx="478" cy="131" r="5" fill="#c9b37f"/><circle cx="478" cy="131" r="11" fill="none" stroke="#d7c8a8"/></g>
+        </svg>
+        <div class="graph-insight" aria-live="polite"><span class="insight-icon" aria-hidden="true">↳</span><div><strong id="graph-question">Which companies are exposed to higher input costs?</strong><p id="graph-explanation">Follow a possible transmission path, then ask your agent to check the evidence.</p></div></div>
+        <p class="graph-disclaimer">Illustrative relationships · Not live data or a trading signal</p>
+      </div>
+    </section>
+    <div class="principles wrap"><span><i>01</i> Keep the evidence</span><span><i>02</i> Connect the context</span><span><i>03</i> Question what changed</span><span><i>04</i> Own your interpretation</span></div>
 
-<nav>
-  <div class="wrap">
-    <a class="mark" href="#">toro<span class="iq">IQ</span></a>
-    <div class="tag">India Markets Brief</div>
-  </div>
-</nav>
+    <section class="section wrap" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow">The project collection</p><h2 id="projects-title">Four lenses.<br>One connected way to research.</h2></div><p>Start with the market you care about.<br>Explore the public work, then shape a research system around your own questions.</p></div>
+      <div class="project-grid">
+        <article class="project-card"><div class="card-top"><span class="project-number">01 / GLOBAL</span><span class="badge">Related project public</span></div><div class="project-symbol" aria-hidden="true">◎</div><h3>Macro graph</h3><p>Follow the links between policy, commodities, currencies, supply chains and the companies exposed to them.</p><div class="tags"><span>Transmission paths</span><span>Second-order effects</span></div><p class="availability">Explore the public crisis-intelligence graph. The broader Global Macro pipeline is not yet released.</p><div class="card-links"><a href="https://nimitmehra.github.io/hive-mind/viewer.html">Explore public graph ↗</a><a href="https://github.com/nimitmehra/hive-mind">Source ↗</a></div></article>
+        <article class="project-card"><div class="card-top"><span class="project-number">02 / INDIA</span><span class="badge">Public research</span></div><div class="project-symbol" aria-hidden="true">↗</div><h3>NSE graph</h3><p>Connect Indian companies with their sectors, macro drivers, management commitments and changing fundamentals.</p><div class="tags"><span>Company research</span><span>Thesis tracking</span></div><p class="availability">Published briefs and a graph viewer are available. The underlying research pipeline remains private.</p><div class="card-links"><a href="https://nimitmehra.github.io/nse-tracker-briefs/viewer.html">Explore public graph ↗</a><a href="https://github.com/nimitmehra/nse-tracker-briefs">Research archive ↗</a></div></article>
+        <article class="project-card"><div class="card-top"><span class="project-number">03 / UNITED STATES</span><span class="badge">Public research</span></div><div class="project-symbol" aria-hidden="true">⊞</div><h3>US equities graph</h3><p>Build context around filings, earnings, business drivers and the relationships behind a company’s investment thesis.</p><div class="tags"><span>Filings &amp; earnings</span><span>Business dependencies</span></div><p class="availability">Published briefs and a graph viewer are available. The underlying research pipeline remains private.</p><div class="card-links"><a href="https://nimitmehra.github.io/us-stock-tracker-briefs/viewer.html">Explore public graph ↗</a><a href="https://github.com/nimitmehra/us-stock-tracker-briefs">Research archive ↗</a></div></article>
+        <article class="project-card"><div class="card-top"><span class="project-number">04 / DIGITAL ASSETS</span><span class="badge muted">Release planned</span></div><div class="project-symbol" aria-hidden="true">⬡</div><h3>Crypto graph</h3><p>Look beyond price: connect protocols, adoption, liquidity, incentives and token supply to the questions that matter.</p><div class="tags"><span>Network fundamentals</span><span>Hype vs. substance</span></div><p class="availability">A working personal research project. Public data and the full pipeline are not yet released; the starter includes a fictional example.</p><div class="card-links"><a href="https://github.com/nimitmehra/toroiq-website/tree/main/starter">Try the graph starter ↗</a></div></article>
+      </div>
+      <p class="section-footnote">Public artifacts are research snapshots, not continuously updated feeds. Check the date and underlying sources before using them.</p>
+    </section>
 
-<header>
-  <div class="circle c1"></div>
-  <div class="circle c2"></div>
-  <div class="wrap">
-    <div class="label">Every market day · After the close</div>
-    <h1>The Indian market,<br>explained in plain English.</h1>
-    <p class="pos">A free daily brief on the NSE. <b>What moved, and why</b> — verified, sourced, and written for humans. <b>No tips. No calls.</b></p>
-    <div class="stripe"></div>
-    <div class="cta-row">
-      <a class="btn btn-gold" href="https://toroiq.substack.com/" target="_blank" rel="noopener">Read the Daily Brief</a>
-      <a class="btn btn-ghost" href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8" target="_blank" rel="noopener">Listen on Spotify</a>
-    </div>
-    <div class="since">Free · English &amp; हिंदी · Read it, hear it, or watch it</div>
-  </div>
-</header>
+    <section class="build-section" id="build" aria-labelledby="build-title"><div class="wrap build-grid">
+      <div class="build-copy"><p class="eyebrow">A graph that works your way</p><h2 id="build-title">Not our stock picks.<br><em>Your research system.</em></h2><p>We’re exploring personalized graphs built around your universe, your hypotheses and the signals you want to follow.</p><ul class="feature-list"><li><span>01</span><div><strong>Choose your universe</strong><p>A sector, a portfolio, a handful of protocols or a macro question.</p></div></li><li><span>02</span><div><strong>Bring your agent and your sources</strong><p>Keep facts, interpretations and your own scoring rules separate.</p></div></li><li><span>03</span><div><strong>Research at your cadence</strong><p>On demand, after the close or every week. You control the runner and its permissions.</p></div></li></ul><a class="text-link light" href="mailto:hello@toroiq.com?subject=My%20personalized%20research%20graph">Tell us what you’d like to track ↗</a></div>
+      <div class="config-panel"><div class="config-heading"><span class="mono">YOUR FIRST GRAPH</span><span class="badge">Local demo</span></div><form id="config-form"><div class="form-row"><label for="market">Research lens<select id="market" name="market"><option value="macro">Global macro</option><option value="nse">NSE / India</option><option value="us">US equities</option><option value="crypto">Crypto</option></select></label><label for="cadence">Preferred cadence<select id="cadence" name="cadence"><option value="on-demand">On demand</option><option value="daily">Daily</option><option value="weekly">Weekly</option></select></label></div><label for="question">Your research question<input id="question" name="question" maxlength="240" value="Which dependencies deserve a closer look?" placeholder="What would change my thesis?"></label><div class="code-header"><span>research.config.json</span><button type="button" id="copy-config">Copy JSON</button></div><pre id="config-preview" tabindex="0" aria-label="Generated research configuration"></pre><button class="button primary download-button" type="submit">Download configuration <span aria-hidden="true">↓</span></button><p class="config-help">This creates a local demo config—not a hosted graph or an active schedule. The starter runs on fictional data; connect permitted sources before using real observations.</p><p id="config-status" role="status" class="config-status"></p></form><noscript><p>JavaScript is off. <a href="starter/config.example.json" download>Download the default demo configuration</a>.</p></noscript><a class="starter-link" href="https://github.com/nimitmehra/toroiq-website/tree/main/starter#quick-start">Open the setup guide →</a></div>
+    </div></section>
 
-<section>
-  <div class="wrap">
-    <h2>What we do</h2>
-    <div class="props">
-      <div class="prop">
-        <h3>What <span class="accent">moved</span></h3>
-        <p>Nifty, the rupee, bond yields, and the stocks that actually mattered today — with the real numbers, anchored to the 3:30 PM close.</p>
-      </div>
-      <div class="prop">
-        <h3>Why it <span class="accent">moved</span></h3>
-        <p>Every move traced to its actual cause, and every claim verified across independent sources before it reaches you. If we can't verify it, we say so.</p>
-      </div>
-      <div class="prop">
-        <h3>No tips. <span class="accent">No calls.</span></h3>
-        <p>We don't tell you what to buy or sell. We explain what happened so you understand the market — the rest is your decision.</p>
-      </div>
-    </div>
-    <div class="sample">
-      "Nifty 50 23,214.95 (<span class="down">−0.12%</span>); rupee <span class="up">+0.45%</span> stronger at ₹95.25; Brent $91.91. Here's what actually drove it…"
-      <span class="src">— from the daily brief, 10 June 2026</span>
-    </div>
-  </div>
-</section>
+    <section class="section wrap" id="agents" aria-labelledby="agents-title"><div class="section-heading"><div><p class="eyebrow">For the agent at the other end</p><h2 id="agents-title">Readable data.<br>Visible reasoning.</h2></div><p>A small, inspectable starting point—not a black-box score or a promise of market-beating returns.</p></div><div class="agent-grid"><article><span class="mono">01 / OBSERVE</span><h3>Start with evidence</h3><p>Record the source, observation time and what was actually reported. Missing evidence stays missing.</p></article><article><span class="mono">02 / CONNECT</span><h3>Make the relationship explicit</h3><p>Store the proposed mechanism alongside its evidence. A hypothesis is not a verified causal relationship.</p></article><article><span class="mono">03 / REVIEW</span><h3>Surface a reason to look</h3><p>Use your rules to flag a change for review. Keep the supporting path visible and the final judgment yours.</p></article></div><div class="agent-resources"><span class="mono">START HERE</span><a href="llms.txt">Agent guide ↗</a><a href="projects.json">Project manifest ↗</a><a href="starter/graph.schema.json">Graph schema ↗</a><a href="https://github.com/nimitmehra/toroiq-website/tree/main/starter">Code &amp; examples ↗</a></div></section>
 
-<section>
-  <div class="wrap">
-    <h2>Where to find us</h2>
-    <div class="channels">
-      <a class="ch hub" href="https://toroiq.substack.com/" target="_blank" rel="noopener">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></span>
-          <div class="kind">Substack · The hub</div>
-        </div>
-        <h3>The Daily Brief</h3>
-        <p>The full written brief, free, every market day. Start here — everything else flows from it.</p>
-        <span class="go">Read the latest brief →</span>
-      </a>
-      <div class="ch">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
-          <div class="kind">Podcast · English</div>
-        </div>
-        <h3>India Markets Brief</h3>
-        <iframe src="https://open.spotify.com/embed/show/033rwEHFh1kFDzi9G5SQv8?utm_source=generator&amp;theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="India Markets Brief on Spotify"></iframe>
-      </div>
-      <div class="ch">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
-          <div class="kind">Podcast · हिंदी</div>
-        </div>
-        <h3>India Markets Brief — हिंदी</h3>
-        <iframe src="https://open.spotify.com/embed/show/033uV72hslyoX5p6bmvBz4?utm_source=generator&amp;theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="India Markets Brief Hindi on Spotify"></iframe>
-        <div class="alt"><span class="cicon sm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg></span> Also on <a href="https://podcasts.apple.com/us/podcast/id1896896732" target="_blank" rel="noopener">Apple Podcasts</a></div>
-      </div>
-      <div class="ch">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
-          <div class="kind">YouTube · English</div>
-        </div>
-        <h3>@nimitmehra</h3>
-        <iframe class="yt" src="https://www.youtube.com/embed/videoseries?list=UU_Ubk4nTLbvwtubej5sc8Lw" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen title="Latest toroIQ video on YouTube"></iframe>
-        <div class="alt"><a href="https://www.youtube.com/@nimitmehra" target="_blank" rel="noopener">Watch on YouTube</a></div>
-      </div>
-      <div class="ch">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
-          <div class="kind">YouTube · हिंदी</div>
-        </div>
-        <h3>@ToroIQHindi</h3>
-        <iframe class="yt" src="https://www.youtube.com/embed/videoseries?list=UUpz12KYfcj7nLAI-YS7twSA" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen title="Latest toroIQ Hindi video on YouTube"></iframe>
-        <div class="alt"><a href="https://www.youtube.com/@ToroIQHindi" target="_blank" rel="noopener">Watch on YouTube</a></div>
-      </div>
-      <div class="ch">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span>
-          <div class="kind">X / Twitter</div>
-        </div>
-        <h3>@toroiq</h3>
-        <p>The day's key numbers and stories, as they're published.</p>
-        <a class="go" href="https://x.com/toroiq" target="_blank" rel="noopener">Follow on X →</a>
-        <div class="alt">Also <a href="https://x.com/nimitmehra" target="_blank" rel="noopener">@nimitmehra</a> for English updates</div>
-      </div>
-      <a class="ch" href="https://instagram.com/nimitmehra" target="_blank" rel="noopener">
-        <div class="khead">
-          <span class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span>
-          <div class="kind">Instagram</div>
-        </div>
-        <h3>@nimitmehra</h3>
-        <p>Daily reels — the brief in four cards, under a minute.</p>
-        <span class="go">Watch on Instagram →</span>
-      </a>
-    </div>
-  </div>
-</section>
+    <section class="journal-section" id="journal" aria-labelledby="journal-title"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">The human-readable side</p><h2 id="journal-title">The research, in plain English.</h2></div><p>toroIQ began with market briefs and videos. That work is still here: what moved, what might explain it, and what deserves a closer look.</p></div><div class="journal-grid"><a class="journal-card" href="https://www.youtube.com/@nimitmehra"><div class="media-art video-art" aria-hidden="true"><span class="play-icon">▶</span><span class="media-wordmark">toro<span>IQ</span></span><span class="media-caption">MARKETS, EXPLAINED.</span></div><div class="journal-text"><span class="eyebrow">Watch / YouTube</span><h3>Context beyond the headline <span aria-hidden="true">↗</span></h3><p>Market explainers and research videos.</p></div></a><a class="journal-card" href="https://toroiq.substack.com/"><div class="media-art read-art" aria-hidden="true"><span class="paper-label">THE MARKETS BRIEF</span><span class="paper-title">What moved.<br>What matters.<br>What’s next?</span><span class="paper-lines"></span></div><div class="journal-text"><span class="eyebrow">Read / Substack</span><h3>Follow the research <span aria-hidden="true">↗</span></h3><p>Written briefs, observations and market context.</p></div></a><a class="journal-card" href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8"><div class="media-art audio-art" aria-hidden="true"><span class="mono">INDIA MARKETS BRIEF</span><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="mono">THE AUDIO EDITION</span></div><div class="journal-text"><span class="eyebrow">Listen / Spotify</span><h3>Take the brief with you <span aria-hidden="true">↗</span></h3><p>The podcast companion to the written research.</p></div></a></div><details class="archive-links"><summary>More channels &amp; Hindi archive</summary><div><a href="https://instagram.com/nimitmehra">Instagram ↗</a><a href="https://x.com/toroiq">toroIQ on X ↗</a><a href="https://x.com/nimitmehra">Nimit on X ↗</a><a href="https://www.youtube.com/@ToroIQHindi">Hindi videos ↗</a><a href="https://open.spotify.com/show/033uV72hslyoX5p6bmvBz4">Hindi podcast ↗</a><a href="https://podcasts.apple.com/us/podcast/id1896896732">Apple Podcasts ↗</a></div></details></div></section>
 
-<section>
-  <div class="wrap road">
-    <h2>Where this is going</h2>
-    <p>toroIQ starts with one promise: <b>one honest, verified brief on the Indian market, every market day</b> — written, spoken, and visual, in English and Hindi.</p>
-    <p>From that base we're building deeper: company research, sector explainers, and tools that help you understand <b>why</b> markets do what they do. Always plain English. Always sourced. Never tips.</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <a class="mark" href="#">toro<span class="iq">IQ</span></a>
-    <p class="disc">toroIQ publishes educational market commentary, not investment advice. We give no buy or sell recommendations, no price targets, no tips, and no calls. SEBI Research Analyst registration is in process. Markets carry risk — please make your own decisions or consult a registered adviser.</p>
-    <div class="row">
-      <a href="mailto:hello@toroiq.com">hello@toroiq.com</a>
-      <a href="https://toroiq.substack.com/" target="_blank" rel="noopener">Substack</a>
-      <a href="https://open.spotify.com/show/033rwEHFh1kFDzi9G5SQv8" target="_blank" rel="noopener">Podcast</a>
-      <a href="https://x.com/toroiq" target="_blank" rel="noopener">X</a>
-      <a href="https://instagram.com/nimitmehra" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.youtube.com/@nimitmehra" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.youtube.com/@ToroIQHindi" target="_blank" rel="noopener">YouTube हिंदी</a>
-    </div>
-    <div class="copy">© 2026 toroIQ · India Markets Brief</div>
-  </div>
-</footer>
-
+    <section class="section wrap about-section" aria-labelledby="about-title"><div><p class="eyebrow">Built in the open, one piece at a time</p><h2 id="about-title">A working project.<br>An open invitation.</h2><p>Built by <a href="https://github.com/nimitmehra">Nimit Mehra</a> out of a personal research practice spanning Indian equities, US equities, crypto and macro. The aim is to make that work useful—and adaptable—to other people and their agents.</p><p>The starter is open source. Existing public projects are linked above. Full tracker releases will follow separately, after private material and data permissions are reviewed.</p><div class="actions"><a class="button primary" href="https://github.com/nimitmehra/toroiq-website/issues/new?labels=feedback&amp;title=Graph%20use%20case%3A%20">Share a use case ↗</a><a class="text-link" href="mailto:hello@toroiq.com">Get in touch →</a></div></div><div class="faq"><details open><summary>Can I run this today?</summary><p>Yes—the open-source starter runs locally on fictional examples for all four research lenses. It produces a graph and a review queue. It does not fetch live data, call a model or schedule itself.</p></details><details><summary>Will this give me earlier signals?</summary><p>The goal is to notice relevant changes and overlooked connections sooner in your research process. Whether a signal is useful must be tested. No predictive accuracy, investment return or timing advantage is promised.</p></details><details><summary>Can I use my own graph and scoring rules?</summary><p>That is the direction of the project. The starter provides an editable schema and a simple rule example. Production connectors, custom scoring and scheduling need to be implemented in your own environment.</p></details><details><summary>Is this a financial data API?</summary><p>No. There is no hosted data API, managed scheduling service or live MCP endpoint here. Public research artifacts and demo files have different scopes and should not be treated as a licensed, complete market dataset.</p></details></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="wordmark" href="/">toro<span>IQ</span><i aria-hidden="true"></i></a><p>Financial research with memory.</p><a href="mailto:hello@toroiq.com">hello@toroiq.com ↗</a></div><div class="footer-bottom"><p>Educational research and experimental software, not investment advice. Outputs can be incomplete or wrong. Verify sources, respect data-provider terms and make your own decisions. No buy/sell recommendations or guaranteed signals.</p><div><a href="llms.txt">For agents</a><a href="https://github.com/nimitmehra/toroiq-website">GitHub</a><span>© 2026 toroIQ</span></div></div></div></footer>
 </body>
 </html>
