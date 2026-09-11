@@ -12,9 +12,26 @@ const cadence = document.querySelector('#cadence');
 const question = document.querySelector('#question');
 const preview = document.querySelector('#config-preview');
 const status = document.querySelector('#config-status');
+const focus = document.querySelector('#focus');
+const seedSummary = document.querySelector('#seed-summary');
+const seedLink = document.querySelector('#selected-seed');
+let seedCatalog = [];
+
+function renderSeedOptions() {
+  const pack = seedCatalog.find(item => item.market === market.value);
+  focus.replaceChildren(new Option('Whole seed pack', ''));
+  if (pack) {
+    pack.focus_options.forEach(item => focus.add(new Option(item.label, item.id)));
+    seedSummary.textContent = `${pack.node_count} nodes · ${pack.edge_count} relationships · ${pack.source_count} sources. Select an entity to include its one-hop neighbors.`;
+  } else {
+    seedSummary.textContent = 'Whole-pack initialization is available. Loading entity choices…';
+  }
+  seedLink.href = `starter/seeds/${market.value}.json`;
+  seedLink.download = `${market.value}.seed.json`;
+}
 
 function getConfig() {
-  return {schema_version: '0.1.0', mode: 'demo', market: market.value, cadence: cadence.value, research_question: question.value.trim(), review_rule: {field: 'change_pct', operator: 'gte', threshold: 10}};
+  return {schema_version: '0.2.0', seed_version: '0.1.0', mode: 'seed', market: market.value, cadence: cadence.value, research_question: question.value.trim(), focus: focus.value ? [focus.value] : [], neighbor_hops: 1};
 }
 function renderConfig() {
   question.setCustomValidity(question.value.trim() ? '' : 'Enter a research question before downloading.');
@@ -31,10 +48,12 @@ function showGraph(key) {
   document.getElementById('graph-explanation').textContent = example.explanation;
   document.getElementById('edge-one').textContent = key === 'macro' ? 'transmits through' : 'informs research';
   document.querySelectorAll('[data-market]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.market === key)));
+  document.querySelector('.graph-window').dispatchEvent(new Event('graphchange'));
 }
-document.querySelectorAll('[data-market]').forEach(button => button.addEventListener('click', () => { market.value = button.dataset.market; showGraph(market.value); renderConfig(); }));
-market.addEventListener('change', () => { showGraph(market.value); renderConfig(); });
+document.querySelectorAll('[data-market]').forEach(button => button.addEventListener('click', () => { market.value = button.dataset.market; showGraph(market.value); renderSeedOptions(); renderConfig(); }));
+market.addEventListener('change', () => { showGraph(market.value); renderSeedOptions(); renderConfig(); });
 cadence.addEventListener('change', renderConfig);
+focus.addEventListener('change', renderConfig);
 question.addEventListener('input', renderConfig);
 configForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -42,11 +61,16 @@ configForm.addEventListener('submit', event => {
   const link = document.createElement('a');
   link.href = url; link.download = 'research.config.json'; document.body.appendChild(link); link.click(); link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  status.textContent = 'Configuration downloaded. Follow the GitHub setup guide to run the local demo.';
+  status.textContent = 'Configuration downloaded. Run starter/seed.py with this file to create your workspace.';
 });
 document.querySelector('#copy-config').addEventListener('click', async () => {
   if (!configForm.reportValidity()) return;
   try { await navigator.clipboard.writeText(JSON.stringify(getConfig(), null, 2)); status.textContent = 'JSON copied. No schedule has been activated.'; }
   catch { const selection = window.getSelection(); const range = document.createRange(); range.selectNodeContents(preview); selection.removeAllRanges(); selection.addRange(range); preview.focus(); status.textContent = 'Select and copy the highlighted JSON with your keyboard.'; }
 });
+renderSeedOptions();
 renderConfig();
+fetch('starter/seeds/index.json')
+  .then(response => { if (!response.ok) throw new Error('Seed catalog unavailable'); return response.json(); })
+  .then(catalog => { seedCatalog = catalog.packs; renderSeedOptions(); renderConfig(); })
+  .catch(() => { seedSummary.textContent = 'Entity choices could not load. You can still download and initialize the whole seed pack, or reload to try again.'; });

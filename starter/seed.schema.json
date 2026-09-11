@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://toroiq.com/starter/seed.schema.json",
+  "title": "toroIQ structural research seed v0.2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "seed_version",
+    "mode",
+    "market",
+    "title",
+    "scope",
+    "reviewed_at",
+    "license",
+    "limitations",
+    "nodes",
+    "edges",
+    "sources",
+    "update_plan"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "seed_version": {
+      "const": "0.1.0"
+    },
+    "mode": {
+      "const": "seed"
+    },
+    "market": {
+      "enum": [
+        "macro",
+        "nse",
+        "us",
+        "crypto"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "type",
+          "source_ids",
+          "research_question",
+          "observations"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "research_question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observations": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "from",
+          "to",
+          "relation",
+          "mechanism",
+          "status",
+          "source_ids",
+          "research_question",
+          "reviewed_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mechanism": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "documented",
+              "hypothesis"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "research_question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "url",
+          "publisher",
+          "locator",
+          "basis",
+          "reviewed_at",
+          "review_after_days"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "publisher": {
+            "type": "string",
+            "minLength": 1
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "review_after_days": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "update_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cadence",
+        "network_access",
+        "instructions"
+      ],
+      "properties": {
+        "cadence": {
+          "const": "user_selected"
+        },
+        "network_access": {
+          "const": "not_implemented"
+        },
+        "instructions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

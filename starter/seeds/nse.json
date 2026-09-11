@@ -1,0 +1,331 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "nse",
+  "title": "NSE technology and banking seed",
+  "scope": "Three Indian companies: TCS, Infosys and HDFC Bank; IT services, FX and lending research dependencies. Not an NSE-wide dataset.",
+  "reviewed_at": "2026-09-11",
+  "license": "MIT — original topology and summaries only; linked sources retain their own terms",
+  "limitations": [
+    "Structural research starting point; no current prices, financial statements or live alerts.",
+    "Source review date is not an observation date or proof of current relationship validity.",
+    "Documented means supported by the cited source in its stated context, not independently audited or predictive.",
+    "Hypotheses require additional evidence; they must not be promoted automatically."
+  ],
+  "nodes": [
+    {
+      "id": "nse:TCS",
+      "label": "Tata Consultancy Services",
+      "type": "company",
+      "source_ids": [
+        "tcs",
+        "tcsfx"
+      ],
+      "research_question": "What has changed in Tata Consultancy Services, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:INFY",
+      "label": "Infosys",
+      "type": "company",
+      "source_ids": [
+        "infosys",
+        "infosysfx"
+      ],
+      "research_question": "What has changed in Infosys, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:HDFCBANK",
+      "label": "HDFC Bank",
+      "type": "company",
+      "source_ids": [
+        "hdfc"
+      ],
+      "research_question": "What has changed in HDFC Bank, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:it-services",
+      "label": "IT services and consulting",
+      "type": "sector",
+      "source_ids": [
+        "tcs",
+        "infosys"
+      ],
+      "research_question": "What has changed in IT services and consulting, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:banking",
+      "label": "Banking services",
+      "type": "sector",
+      "source_ids": [
+        "hdfc"
+      ],
+      "research_question": "What has changed in Banking services, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:fx",
+      "label": "Foreign-exchange exposure",
+      "type": "driver",
+      "source_ids": [
+        "tcsfx",
+        "infosysfx"
+      ],
+      "research_question": "What has changed in Foreign-exchange exposure, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:tech-spend",
+      "label": "Client technology budgets",
+      "type": "driver",
+      "source_ids": [
+        "tcs",
+        "infosys"
+      ],
+      "research_question": "What has changed in Client technology budgets, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:repo",
+      "label": "India repo policy",
+      "type": "policy",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What has changed in India repo policy, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:lending",
+      "label": "Indian lending rates",
+      "type": "driver",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What has changed in Indian lending rates, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "nse:loan-demand",
+      "label": "Loan demand",
+      "type": "driver",
+      "source_ids": [
+        "hdfc"
+      ],
+      "research_question": "What has changed in Loan demand, and what evidence supports the change?",
+      "observations": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "nse:TCS",
+      "to": "nse:it-services",
+      "relation": "operates_in",
+      "mechanism": "TCS describes its business in technology services and consulting.",
+      "status": "documented",
+      "source_ids": [
+        "tcs"
+      ],
+      "research_question": "Which services and geographies are changing?",
+      "id": "nse:edge-01",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:INFY",
+      "to": "nse:it-services",
+      "relation": "operates_in",
+      "mechanism": "Infosys describes its business in digital services and consulting.",
+      "status": "documented",
+      "source_ids": [
+        "infosys"
+      ],
+      "research_question": "Which service lines are driving reported growth?",
+      "id": "nse:edge-02",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:HDFCBANK",
+      "to": "nse:banking",
+      "relation": "operates_in",
+      "mechanism": "HDFC Bank provides retail and wholesale banking services.",
+      "status": "documented",
+      "source_ids": [
+        "hdfc"
+      ],
+      "research_question": "How has the funding and lending mix changed?",
+      "id": "nse:edge-03",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:TCS",
+      "to": "nse:fx",
+      "relation": "discloses_exposure",
+      "mechanism": "FY2025 disclosures identify foreign-currency risk and hedging activity.",
+      "status": "documented",
+      "source_ids": [
+        "tcsfx"
+      ],
+      "research_question": "What are the latest currency mix and hedge disclosures?",
+      "id": "nse:edge-04",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:INFY",
+      "to": "nse:fx",
+      "relation": "discloses_exposure",
+      "mechanism": "FY2025 disclosures identify foreign-currency exposure in financial assets and liabilities.",
+      "status": "documented",
+      "source_ids": [
+        "infosysfx"
+      ],
+      "research_question": "Does the latest disclosure change the net exposure?",
+      "id": "nse:edge-05",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:tech-spend",
+      "to": "nse:it-services",
+      "relation": "may_affect",
+      "mechanism": "Changes in client budgets may affect IT-service demand; no quantified sensitivity is established here.",
+      "status": "hypothesis",
+      "source_ids": [
+        "tcs",
+        "infosys"
+      ],
+      "research_question": "Do order intake, commentary and revenue corroborate the budget hypothesis?",
+      "id": "nse:edge-06",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:repo",
+      "to": "nse:lending",
+      "relation": "influences",
+      "mechanism": "The RBI framework includes transmission through externally benchmarked lending rates.",
+      "status": "documented",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "Which benchmarks and reset periods apply?",
+      "id": "nse:edge-07",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:lending",
+      "to": "nse:HDFCBANK",
+      "relation": "may_affect",
+      "mechanism": "Loan repricing may affect earnings, but funding costs and balance-sheet mix can offset it.",
+      "status": "hypothesis",
+      "source_ids": [
+        "rbi",
+        "hdfc"
+      ],
+      "research_question": "What is the bank-specific asset/liability repricing evidence?",
+      "id": "nse:edge-08",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:lending",
+      "to": "nse:loan-demand",
+      "relation": "may_affect",
+      "mechanism": "Borrowing costs may influence loan demand; this is a research question, not a forecast.",
+      "status": "hypothesis",
+      "source_ids": [
+        "rbi",
+        "hdfc"
+      ],
+      "research_question": "Do disbursements and applications support the hypothesis?",
+      "id": "nse:edge-09",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "nse:loan-demand",
+      "to": "nse:HDFCBANK",
+      "relation": "may_affect",
+      "mechanism": "Sector loan demand may affect the bank only to the extent it wins and funds that business.",
+      "status": "hypothesis",
+      "source_ids": [
+        "hdfc"
+      ],
+      "research_question": "Is sector demand translating into this bank's actual loan growth?",
+      "id": "nse:edge-10",
+      "reviewed_at": "2026-09-11"
+    }
+  ],
+  "sources": [
+    {
+      "id": "tcs",
+      "title": "TCS — About us",
+      "url": "https://www.tcs.com/who-we-are/about-us",
+      "publisher": "Tata Consultancy Services",
+      "locator": "Company overview",
+      "basis": "Company-described business activities.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "tcsfx",
+      "title": "TCS integrated annual report 2024–25",
+      "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2024-25/ar/annual-report-2024-2025.pdf",
+      "publisher": "Tata Consultancy Services",
+      "locator": "Financial instruments: Market risk / Foreign currency exchange rate risk",
+      "basis": "Historical reporting-period disclosure; not a current net exposure estimate.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "infosys",
+      "title": "Infosys — About us",
+      "url": "https://www.infosys.com/about.html",
+      "publisher": "Infosys",
+      "locator": "Company overview",
+      "basis": "Company-described technology services and consulting.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "infosysfx",
+      "title": "Infosys integrated annual report 2024–25",
+      "url": "https://www.infosys.com/investors/reports-filings/annual-report/annual/documents/infosys-ar-25.pdf",
+      "publisher": "Infosys",
+      "locator": "Consolidated financial statements: foreign currency risk; PDF page 304 (one-based)",
+      "basis": "Historical reporting-period disclosure; not a current net exposure estimate.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "hdfc",
+      "title": "HDFC Bank — About us",
+      "url": "https://www.hdfc.bank.in/about-us",
+      "publisher": "HDFC Bank",
+      "locator": "Our Businesses / Retail Banking / Wholesale Banking",
+      "basis": "Company-described banking activities; no margin forecast.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "rbi",
+      "title": "RBI — Monetary policy framework and transmission",
+      "url": "https://rbi.org.in/scripts/PublicationsView.aspx?Id=18086",
+      "publisher": "Reserve Bank of India",
+      "locator": "Monetary policy objectives, repo instrument and external benchmark lending",
+      "basis": "Institutional framework; verify current rules and lending terms separately.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    }
+  ],
+  "update_plan": {
+    "cadence": "user_selected",
+    "network_access": "not_implemented",
+    "instructions": [
+      "Re-open the linked primary sources and look for newer disclosures.",
+      "Preserve old evidence and its reporting period; do not overwrite history.",
+      "Record publication, observation and retrieval times separately for new observations.",
+      "Review hypotheses independently; do not treat a source's general context as proof.",
+      "Validate references and review proposed changes before merging into your repository."
+    ]
+  }
+}

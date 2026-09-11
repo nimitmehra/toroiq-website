@@ -1,0 +1,38 @@
+/* Lightweight research-cycle animation. Timing is coordinated by motion.js. */
+.motion-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px 0;
+}
+.motion-controls .mono { font-size: 8px; color: #5d7652; letter-spacing: .05em; }
+.motion-controls button {
+  border: 1px solid #cbd8c4;
+  color: #43613c;
+  background: #f4f7ed;
+  border-radius: 4px;
+  font-size: 9px;
+  padding: 6px 10px;
+  min-height: 30px;
+}
+.motion-controls button:disabled { cursor: default; }
+.travel-pulse { fill: #72994e; stroke: #e1efcc; stroke-width: 4px; opacity: 0; }
+.graph-node rect, .graph-center rect, .graph-insight { transition: fill 1s ease, stroke 1s ease, background 1s ease, border-color 1s ease; }
+.graph-window[data-phase="0"] .source-node rect { stroke: #91ab76; fill: #f0f5e6; }
+.graph-window[data-phase="1"] .graph-node rect { stroke: #9db887; }
+.graph-window[data-phase="2"] .graph-center rect { fill: #386447; }
+.graph-window[data-phase="2"] .graph-center>circle { stroke: #93ac72; }
+.graph-window[data-phase="3"] .graph-insight { background: #e1edcf; border-color: #b0c991; }
+.seed-download { font-weight: 650 !important; }
+#seed-summary { min-height: 34px; }
+#selected-seed { text-align: left; margin-block: 8px 15px; }
+@media (max-width: 430px) {
+  .motion-controls { padding-inline: 14px; gap: 7px; }
+  .motion-controls .mono { font-size: 7px; }
+  .motion-controls button { font-size: 8px; padding-inline: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .travel-pulse { display: none; }
+  .graph-node rect, .graph-center rect, .graph-insight { transition: none; }
+}

@@ -1,15 +1,85 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "updated_at": "2026-09-11",
   "name": "toroIQ",
   "website": "https://toroiq.com/",
   "scope": "Independent research project; not a hosted financial data service.",
   "agent_guide": "https://toroiq.com/llms.txt",
-  "starter": {"repository": "https://github.com/nimitmehra/toroiq-website/tree/main/starter", "license": "MIT (starter directory only)", "mode": "offline_synthetic_demo", "schema": "https://toroiq.com/starter/graph.schema.json", "configuration": "https://toroiq.com/starter/config.example.json", "supports_live_data": false, "activates_schedule": false},
+  "starter": {
+    "repository": "https://github.com/nimitmehra/toroiq-website/tree/main/starter",
+    "license": "MIT (original starter code, seed topology and summaries; excludes linked documents)",
+    "mode": "structural_seed",
+    "schema": "https://toroiq.com/starter/seed.schema.json",
+    "configuration": "https://toroiq.com/starter/seed.config.example.json",
+    "catalog": "https://toroiq.com/starter/seeds/index.json",
+    "seed_version": "0.1.0",
+    "supports_live_data": false,
+    "activates_schedule": false
+  },
   "projects": [
-    {"id": "macro", "name": "Macro graph", "status": "related_project_public", "description": "The linked public crisis-intelligence project explores geopolitical and macro transmission paths. The broader Global Macro tracker is not released.", "repository": "https://github.com/nimitmehra/hive-mind", "viewer": "https://nimitmehra.github.io/hive-mind/viewer.html", "access_scope": "Related crisis project code and dated research; not the full Global Macro pipeline."},
-    {"id": "nse", "name": "NSE graph", "status": "public_outputs_private_pipeline", "description": "Indian equity research briefs and graph viewer.", "repository": "https://github.com/nimitmehra/nse-tracker-briefs", "viewer": "https://nimitmehra.github.io/nse-tracker-briefs/viewer.html", "access_scope": "Published research outputs, not underlying pipeline source."},
-    {"id": "us", "name": "US equities graph", "status": "public_outputs_private_pipeline", "description": "US equity research briefs and graph viewer.", "repository": "https://github.com/nimitmehra/us-stock-tracker-briefs", "viewer": "https://nimitmehra.github.io/us-stock-tracker-briefs/viewer.html", "access_scope": "Published research outputs, not underlying pipeline source."},
-    {"id": "crypto", "name": "Crypto graph", "status": "release_planned", "description": "Personal research project covering protocols, liquidity, adoption and incentives.", "repository": null, "viewer": null, "access_scope": "No public full pipeline or dataset. Fictional starter example only."}
+    {
+      "id": "macro",
+      "name": "Macro graph",
+      "status": "related_project_public",
+      "description": "The linked public crisis-intelligence project explores geopolitical and macro transmission paths. The broader Global Macro tracker is not released.",
+      "repository": "https://github.com/nimitmehra/hive-mind",
+      "viewer": "https://nimitmehra.github.io/hive-mind/viewer.html",
+      "access_scope": "Related crisis project code and dated research; not the full Global Macro pipeline.",
+      "seed": {
+        "url": "https://toroiq.com/starter/seeds/macro.json",
+        "version": "0.1.0",
+        "reviewed_at": "2026-09-11",
+        "nodes": 11,
+        "relationships": 9
+      }
+    },
+    {
+      "id": "nse",
+      "name": "NSE graph",
+      "status": "public_outputs_private_pipeline",
+      "description": "Indian equity research briefs and graph viewer.",
+      "repository": "https://github.com/nimitmehra/nse-tracker-briefs",
+      "viewer": "https://nimitmehra.github.io/nse-tracker-briefs/viewer.html",
+      "access_scope": "Published research outputs, not underlying pipeline source.",
+      "seed": {
+        "url": "https://toroiq.com/starter/seeds/nse.json",
+        "version": "0.1.0",
+        "reviewed_at": "2026-09-11",
+        "nodes": 10,
+        "relationships": 10
+      }
+    },
+    {
+      "id": "us",
+      "name": "US equities graph",
+      "status": "public_outputs_private_pipeline",
+      "description": "US equity research briefs and graph viewer.",
+      "repository": "https://github.com/nimitmehra/us-stock-tracker-briefs",
+      "viewer": "https://nimitmehra.github.io/us-stock-tracker-briefs/viewer.html",
+      "access_scope": "Published research outputs, not underlying pipeline source.",
+      "seed": {
+        "url": "https://toroiq.com/starter/seeds/us.json",
+        "version": "0.1.0",
+        "reviewed_at": "2026-09-11",
+        "nodes": 10,
+        "relationships": 10
+      }
+    },
+    {
+      "id": "crypto",
+      "name": "Crypto graph",
+      "status": "release_planned",
+      "description": "Personal research project covering protocols, liquidity, adoption and incentives.",
+      "repository": null,
+      "viewer": null,
+      "access_scope": "No public full pipeline or dataset. Fictional starter example only.",
+      "seed": {
+        "url": "https://toroiq.com/starter/seeds/crypto.json",
+        "version": "0.1.0",
+        "reviewed_at": "2026-09-11",
+        "nodes": 10,
+        "relationships": 12
+      }
+    }
   ]
 }

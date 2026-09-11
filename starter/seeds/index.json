@@ -1,0 +1,228 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "reviewed_at": "2026-09-11",
+  "license": "MIT — original metadata and topology only; source documents excluded",
+  "graph_schema": "https://toroiq.com/starter/seed.schema.json",
+  "initializer": "https://github.com/nimitmehra/toroiq-website/blob/main/starter/seed.py",
+  "network_access": false,
+  "scheduling": false,
+  "packs": [
+    {
+      "market": "macro",
+      "title": "Macro transmission seed",
+      "scope": "US and Indian monetary-policy pathways, plus oil-to-gasoline costs. A small structural map, not comprehensive global macro coverage.",
+      "url": "https://toroiq.com/starter/seeds/macro.json",
+      "node_count": 11,
+      "edge_count": 9,
+      "documented_count": 8,
+      "hypothesis_count": 1,
+      "source_count": 3,
+      "focus_options": [
+        {
+          "id": "macro:fed",
+          "label": "Federal Reserve"
+        },
+        {
+          "id": "macro:fed-policy",
+          "label": "US policy-rate stance"
+        },
+        {
+          "id": "macro:credit",
+          "label": "US borrowing conditions"
+        },
+        {
+          "id": "macro:households",
+          "label": "US household spending"
+        },
+        {
+          "id": "macro:capex",
+          "label": "US business investment"
+        },
+        {
+          "id": "macro:inflation",
+          "label": "US inflation"
+        },
+        {
+          "id": "macro:oil",
+          "label": "Crude oil costs"
+        },
+        {
+          "id": "macro:gasoline",
+          "label": "US gasoline prices"
+        },
+        {
+          "id": "macro:rbi",
+          "label": "Reserve Bank of India"
+        },
+        {
+          "id": "macro:repo",
+          "label": "India repo policy"
+        },
+        {
+          "id": "macro:lending",
+          "label": "Indian bank lending rates"
+        }
+      ]
+    },
+    {
+      "market": "nse",
+      "title": "NSE technology and banking seed",
+      "scope": "Three Indian companies: TCS, Infosys and HDFC Bank; IT services, FX and lending research dependencies. Not an NSE-wide dataset.",
+      "url": "https://toroiq.com/starter/seeds/nse.json",
+      "node_count": 10,
+      "edge_count": 10,
+      "documented_count": 6,
+      "hypothesis_count": 4,
+      "source_count": 6,
+      "focus_options": [
+        {
+          "id": "nse:TCS",
+          "label": "Tata Consultancy Services"
+        },
+        {
+          "id": "nse:INFY",
+          "label": "Infosys"
+        },
+        {
+          "id": "nse:HDFCBANK",
+          "label": "HDFC Bank"
+        },
+        {
+          "id": "nse:it-services",
+          "label": "IT services and consulting"
+        },
+        {
+          "id": "nse:banking",
+          "label": "Banking services"
+        },
+        {
+          "id": "nse:fx",
+          "label": "Foreign-exchange exposure"
+        },
+        {
+          "id": "nse:tech-spend",
+          "label": "Client technology budgets"
+        },
+        {
+          "id": "nse:repo",
+          "label": "India repo policy"
+        },
+        {
+          "id": "nse:lending",
+          "label": "Indian lending rates"
+        },
+        {
+          "id": "nse:loan-demand",
+          "label": "Loan demand"
+        }
+      ]
+    },
+    {
+      "market": "us",
+      "title": "US cloud and compute seed",
+      "scope": "Microsoft, Amazon and NVIDIA; cloud platforms, compute products and infrastructure questions. Not a complete supplier graph or US equity dataset.",
+      "url": "https://toroiq.com/starter/seeds/us.json",
+      "node_count": 10,
+      "edge_count": 10,
+      "documented_count": 7,
+      "hypothesis_count": 3,
+      "source_count": 3,
+      "focus_options": [
+        {
+          "id": "us:MSFT",
+          "label": "Microsoft"
+        },
+        {
+          "id": "us:AMZN",
+          "label": "Amazon"
+        },
+        {
+          "id": "us:NVDA",
+          "label": "NVIDIA"
+        },
+        {
+          "id": "us:azure",
+          "label": "Azure"
+        },
+        {
+          "id": "us:aws",
+          "label": "Amazon Web Services"
+        },
+        {
+          "id": "us:data-center",
+          "label": "NVIDIA data-center products"
+        },
+        {
+          "id": "us:gaming",
+          "label": "NVIDIA gaming products"
+        },
+        {
+          "id": "us:cloud-demand",
+          "label": "Cloud consumption"
+        },
+        {
+          "id": "us:infrastructure",
+          "label": "Datacenter infrastructure investment"
+        },
+        {
+          "id": "us:ai-demand",
+          "label": "AI workload demand"
+        }
+      ]
+    },
+    {
+      "market": "crypto",
+      "title": "Ethereum and lending seed",
+      "scope": "Ethereum, ETH, Aave V3 and Circle/USDC; fee, staking and collateral mechanics. Not a token-price feed or comprehensive crypto universe.",
+      "url": "https://toroiq.com/starter/seeds/crypto.json",
+      "node_count": 10,
+      "edge_count": 12,
+      "documented_count": 11,
+      "hypothesis_count": 1,
+      "source_count": 4,
+      "focus_options": [
+        {
+          "id": "crypto:ethereum",
+          "label": "Ethereum"
+        },
+        {
+          "id": "crypto:ETH",
+          "label": "Ether (ETH)"
+        },
+        {
+          "id": "crypto:gas",
+          "label": "Ethereum transaction fees"
+        },
+        {
+          "id": "crypto:burn",
+          "label": "Base-fee burn"
+        },
+        {
+          "id": "crypto:validators",
+          "label": "Ethereum validators"
+        },
+        {
+          "id": "crypto:circle",
+          "label": "Circle"
+        },
+        {
+          "id": "crypto:USDC",
+          "label": "USDC"
+        },
+        {
+          "id": "crypto:aave",
+          "label": "Aave V3"
+        },
+        {
+          "id": "crypto:collateral",
+          "label": "Collateral values"
+        },
+        {
+          "id": "crypto:liquidation",
+          "label": "Borrow-position liquidation risk"
+        }
+      ]
+    }
+  ]
+}

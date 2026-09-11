@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "macro",
+  "cadence": "on-demand",
+  "research_question": "Which dependencies deserve a closer look?",
+  "focus": [],
+  "neighbor_hops": 1
+}

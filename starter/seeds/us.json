@@ -1,0 +1,299 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "us",
+  "title": "US cloud and compute seed",
+  "scope": "Microsoft, Amazon and NVIDIA; cloud platforms, compute products and infrastructure questions. Not a complete supplier graph or US equity dataset.",
+  "reviewed_at": "2026-09-11",
+  "license": "MIT — original topology and summaries only; linked sources retain their own terms",
+  "limitations": [
+    "Structural research starting point; no current prices, financial statements or live alerts.",
+    "Source review date is not an observation date or proof of current relationship validity.",
+    "Documented means supported by the cited source in its stated context, not independently audited or predictive.",
+    "Hypotheses require additional evidence; they must not be promoted automatically."
+  ],
+  "nodes": [
+    {
+      "id": "us:MSFT",
+      "label": "Microsoft",
+      "type": "company",
+      "source_ids": [
+        "ms"
+      ],
+      "research_question": "What has changed in Microsoft, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:AMZN",
+      "label": "Amazon",
+      "type": "company",
+      "source_ids": [
+        "amzn"
+      ],
+      "research_question": "What has changed in Amazon, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:NVDA",
+      "label": "NVIDIA",
+      "type": "company",
+      "source_ids": [
+        "nvda"
+      ],
+      "research_question": "What has changed in NVIDIA, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:azure",
+      "label": "Azure",
+      "type": "business",
+      "source_ids": [
+        "ms"
+      ],
+      "research_question": "What has changed in Azure, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:aws",
+      "label": "Amazon Web Services",
+      "type": "business",
+      "source_ids": [
+        "amzn"
+      ],
+      "research_question": "What has changed in Amazon Web Services, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:data-center",
+      "label": "NVIDIA data-center products",
+      "type": "business",
+      "source_ids": [
+        "nvda"
+      ],
+      "research_question": "What has changed in NVIDIA data-center products, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:gaming",
+      "label": "NVIDIA gaming products",
+      "type": "business",
+      "source_ids": [
+        "nvda"
+      ],
+      "research_question": "What has changed in NVIDIA gaming products, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:cloud-demand",
+      "label": "Cloud consumption",
+      "type": "driver",
+      "source_ids": [
+        "ms",
+        "amzn"
+      ],
+      "research_question": "What has changed in Cloud consumption, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:infrastructure",
+      "label": "Datacenter infrastructure investment",
+      "type": "driver",
+      "source_ids": [
+        "ms",
+        "amzn"
+      ],
+      "research_question": "What has changed in Datacenter infrastructure investment, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "us:ai-demand",
+      "label": "AI workload demand",
+      "type": "driver",
+      "source_ids": [
+        "ms",
+        "nvda"
+      ],
+      "research_question": "What has changed in AI workload demand, and what evidence supports the change?",
+      "observations": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "us:MSFT",
+      "to": "us:azure",
+      "relation": "provides",
+      "mechanism": "Microsoft describes Azure as its cloud-services platform.",
+      "status": "documented",
+      "source_ids": [
+        "ms"
+      ],
+      "research_question": "What do the latest disclosures say about Azure consumption?",
+      "id": "us:edge-01",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:AMZN",
+      "to": "us:aws",
+      "relation": "operates",
+      "mechanism": "Amazon reports AWS as its cloud business.",
+      "status": "documented",
+      "source_ids": [
+        "amzn"
+      ],
+      "research_question": "How have AWS results and disclosures changed?",
+      "id": "us:edge-02",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:NVDA",
+      "to": "us:data-center",
+      "relation": "provides",
+      "mechanism": "NVIDIA describes data-center accelerated computing products.",
+      "status": "documented",
+      "source_ids": [
+        "nvda"
+      ],
+      "research_question": "What changes in products and demand are actually disclosed?",
+      "id": "us:edge-03",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:NVDA",
+      "to": "us:gaming",
+      "relation": "provides",
+      "mechanism": "NVIDIA describes a gaming products business.",
+      "status": "documented",
+      "source_ids": [
+        "nvda"
+      ],
+      "research_question": "How does gaming demand differ from the data-center cycle?",
+      "id": "us:edge-04",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:cloud-demand",
+      "to": "us:azure",
+      "relation": "revenue_driver",
+      "mechanism": "Microsoft describes Azure consumption as a revenue driver.",
+      "status": "documented",
+      "source_ids": [
+        "ms"
+      ],
+      "research_question": "Is growth consumption-driven or affected by other factors?",
+      "id": "us:edge-05",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:cloud-demand",
+      "to": "us:aws",
+      "relation": "may_affect",
+      "mechanism": "Broader cloud demand may influence AWS, but share and pricing must be checked.",
+      "status": "hypothesis",
+      "source_ids": [
+        "amzn"
+      ],
+      "research_question": "Does AWS-specific evidence support the sector demand thesis?",
+      "id": "us:edge-06",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:MSFT",
+      "to": "us:infrastructure",
+      "relation": "invests_in",
+      "mechanism": "Microsoft describes investment in datacenter infrastructure.",
+      "status": "documented",
+      "source_ids": [
+        "ms"
+      ],
+      "research_question": "What are the latest capital spending, capacity and utilization disclosures?",
+      "id": "us:edge-07",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:AMZN",
+      "to": "us:infrastructure",
+      "relation": "invests_in",
+      "mechanism": "Amazon describes investment in infrastructure supporting its businesses, including AWS.",
+      "status": "documented",
+      "source_ids": [
+        "amzn"
+      ],
+      "research_question": "Separate AWS infrastructure from other company capital spending.",
+      "id": "us:edge-08",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:infrastructure",
+      "to": "us:data-center",
+      "relation": "may_affect",
+      "mechanism": "Cloud infrastructure spending may create demand for NVIDIA products, but procurement and custom silicon can change the link.",
+      "status": "hypothesis",
+      "source_ids": [
+        "ms",
+        "amzn",
+        "nvda"
+      ],
+      "research_question": "Which spending is addressable by NVIDIA, and what evidence establishes it?",
+      "id": "us:edge-09",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "us:ai-demand",
+      "to": "us:infrastructure",
+      "relation": "may_affect",
+      "mechanism": "AI workload demand may motivate capacity investment; returns and utilization are not established by this seed.",
+      "status": "hypothesis",
+      "source_ids": [
+        "ms",
+        "nvda"
+      ],
+      "research_question": "Are deployed workloads keeping pace with investment?",
+      "id": "us:edge-10",
+      "reviewed_at": "2026-09-11"
+    }
+  ],
+  "sources": [
+    {
+      "id": "ms",
+      "title": "Microsoft annual report 2025",
+      "url": "https://www.microsoft.com/investor/reports/ar25/index.html",
+      "publisher": "Microsoft",
+      "locator": "Business: Azure; investments in datacenter infrastructure",
+      "basis": "FY2025 historical business description, not a claim about current segment reporting.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "amzn",
+      "title": "Amazon annual report 2025, Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "publisher": "Amazon / SEC EDGAR",
+      "locator": "Item 1: Business / AWS; cash flows and infrastructure investment",
+      "basis": "FY2025 historical business description.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "nvda",
+      "title": "NVIDIA annual report FY2026, Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "publisher": "NVIDIA / SEC EDGAR",
+      "locator": "Item 1: Business / Data Center / Gaming",
+      "basis": "Historical fiscal-year product description; no customer spending forecast.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    }
+  ],
+  "update_plan": {
+    "cadence": "user_selected",
+    "network_access": "not_implemented",
+    "instructions": [
+      "Re-open the linked primary sources and look for newer disclosures.",
+      "Preserve old evidence and its reporting period; do not overwrite history.",
+      "Record publication, observation and retrieval times separately for new observations.",
+      "Review hypotheses independently; do not treat a source's general context as proof.",
+      "Validate references and review proposed changes before merging into your repository."
+    ]
+  }
+}

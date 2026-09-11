@@ -1,0 +1,332 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "crypto",
+  "title": "Ethereum and lending seed",
+  "scope": "Ethereum, ETH, Aave V3 and Circle/USDC; fee, staking and collateral mechanics. Not a token-price feed or comprehensive crypto universe.",
+  "reviewed_at": "2026-09-11",
+  "license": "MIT — original topology and summaries only; linked sources retain their own terms",
+  "limitations": [
+    "Structural research starting point; no current prices, financial statements or live alerts.",
+    "Source review date is not an observation date or proof of current relationship validity.",
+    "Documented means supported by the cited source in its stated context, not independently audited or predictive.",
+    "Hypotheses require additional evidence; they must not be promoted automatically."
+  ],
+  "nodes": [
+    {
+      "id": "crypto:ethereum",
+      "label": "Ethereum",
+      "type": "network",
+      "source_ids": [
+        "gas",
+        "staking"
+      ],
+      "research_question": "What has changed in Ethereum, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:ETH",
+      "label": "Ether (ETH)",
+      "type": "asset",
+      "source_ids": [
+        "gas",
+        "staking"
+      ],
+      "research_question": "What has changed in Ether (ETH), and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:gas",
+      "label": "Ethereum transaction fees",
+      "type": "mechanism",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "What has changed in Ethereum transaction fees, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:burn",
+      "label": "Base-fee burn",
+      "type": "mechanism",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "What has changed in Base-fee burn, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:validators",
+      "label": "Ethereum validators",
+      "type": "participant",
+      "source_ids": [
+        "staking"
+      ],
+      "research_question": "What has changed in Ethereum validators, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:circle",
+      "label": "Circle",
+      "type": "issuer",
+      "source_ids": [
+        "circle"
+      ],
+      "research_question": "What has changed in Circle, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:USDC",
+      "label": "USDC",
+      "type": "asset",
+      "source_ids": [
+        "circle"
+      ],
+      "research_question": "What has changed in USDC, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:aave",
+      "label": "Aave V3",
+      "type": "protocol",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "What has changed in Aave V3, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:collateral",
+      "label": "Collateral values",
+      "type": "driver",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "What has changed in Collateral values, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "crypto:liquidation",
+      "label": "Borrow-position liquidation risk",
+      "type": "risk",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "What has changed in Borrow-position liquidation risk, and what evidence supports the change?",
+      "observations": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "crypto:ethereum",
+      "to": "crypto:ETH",
+      "relation": "uses_native_asset",
+      "mechanism": "Ethereum transaction gas is paid in ETH.",
+      "status": "documented",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "Check network and chain identity before applying the fee model.",
+      "id": "crypto:edge-01",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:gas",
+      "to": "crypto:ETH",
+      "relation": "denominated_in",
+      "mechanism": "Ethereum fees are denominated in ETH, commonly expressed in gwei.",
+      "status": "documented",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "Separate ETH-denominated fees from their fiat value.",
+      "id": "crypto:edge-02",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:gas",
+      "to": "crypto:burn",
+      "relation": "includes",
+      "mechanism": "The base-fee component is burned; priority fees are treated differently.",
+      "status": "documented",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "What are the latest base-fee and priority-fee observations?",
+      "id": "crypto:edge-03",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:burn",
+      "to": "crypto:ETH",
+      "relation": "reduces_supply",
+      "mechanism": "Burning base fees removes ETH from circulation; net supply also depends on issuance.",
+      "status": "documented",
+      "source_ids": [
+        "gas"
+      ],
+      "research_question": "Compare burn with issuance before claiming net deflation.",
+      "id": "crypto:edge-04",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:validators",
+      "to": "crypto:ethereum",
+      "relation": "secures",
+      "mechanism": "Validators participate in Ethereum consensus through staked ETH.",
+      "status": "documented",
+      "source_ids": [
+        "staking"
+      ],
+      "research_question": "What are the current participation, concentration and failure risks?",
+      "id": "crypto:edge-05",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:ETH",
+      "to": "crypto:validators",
+      "relation": "staked_by",
+      "mechanism": "ETH stake underpins validator incentives and penalties.",
+      "status": "documented",
+      "source_ids": [
+        "staking"
+      ],
+      "research_question": "Distinguish direct validator stake from third-party staking products.",
+      "id": "crypto:edge-06",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:circle",
+      "to": "crypto:USDC",
+      "relation": "issues",
+      "mechanism": "Circle describes itself as the issuer of USDC.",
+      "status": "documented",
+      "source_ids": [
+        "circle"
+      ],
+      "research_question": "Check current reserve reporting and redemption terms independently.",
+      "id": "crypto:edge-07",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:USDC",
+      "to": "crypto:ethereum",
+      "relation": "available_on",
+      "mechanism": "Circle lists Ethereum among networks supporting native USDC.",
+      "status": "documented",
+      "source_ids": [
+        "circle"
+      ],
+      "research_question": "Verify the official chain-specific contract; do not assume bridged tokens are native.",
+      "id": "crypto:edge-08",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:aave",
+      "to": "crypto:ethereum",
+      "relation": "deployed_on",
+      "mechanism": "Aave V3 documentation identifies Ethereum among its deployment networks.",
+      "status": "documented",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "Check the exact deployment and reserve configuration.",
+      "id": "crypto:edge-09",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:collateral",
+      "to": "crypto:liquidation",
+      "relation": "influences",
+      "mechanism": "Collateral and debt values affect Aave position health and liquidation eligibility.",
+      "status": "documented",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "Use position-specific collateral, debt, oracle and threshold data.",
+      "id": "crypto:edge-10",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:aave",
+      "to": "crypto:liquidation",
+      "relation": "implements",
+      "mechanism": "Aave defines liquidation mechanics for undercollateralized borrow positions.",
+      "status": "documented",
+      "source_ids": [
+        "aave"
+      ],
+      "research_question": "Which reserve parameters and health-factor rules apply?",
+      "id": "crypto:edge-11",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "crypto:ETH",
+      "to": "crypto:liquidation",
+      "relation": "may_affect",
+      "mechanism": "ETH price changes may affect positions exposed to ETH collateral; no actual positions are included.",
+      "status": "hypothesis",
+      "source_ids": [
+        "aave",
+        "gas"
+      ],
+      "research_question": "Confirm that the position is ETH-exposed before inferring liquidation risk.",
+      "id": "crypto:edge-12",
+      "reviewed_at": "2026-09-11"
+    }
+  ],
+  "sources": [
+    {
+      "id": "gas",
+      "title": "Ethereum — Gas and fees",
+      "url": "https://ethereum.org/en/developers/docs/gas/",
+      "publisher": "ethereum.org",
+      "locator": "Gas fees / Base fee / Priority fee",
+      "basis": "Protocol mechanics; fee amounts and parameters require fresh chain data.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "staking",
+      "title": "Ethereum — Staking",
+      "url": "https://ethereum.org/en/staking/",
+      "publisher": "ethereum.org",
+      "locator": "Validators, staking and network security",
+      "basis": "Protocol explanation; no staking yield or validator count is included.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "circle",
+      "title": "Circle — USDC",
+      "url": "https://www.circle.com/usdc",
+      "publisher": "Circle",
+      "locator": "Issuer description / Supported blockchains",
+      "basis": "Issuer description, not an independent reserve audit or redemption guarantee.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "aave",
+      "title": "Aave V3 overview",
+      "url": "https://aave.com/docs/aave-v3/overview",
+      "publisher": "Aave documentation",
+      "locator": "Overview / Supply / Borrow",
+      "basis": "Protocol mechanics; markets and parameters vary by deployment.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    }
+  ],
+  "update_plan": {
+    "cadence": "user_selected",
+    "network_access": "not_implemented",
+    "instructions": [
+      "Re-open the linked primary sources and look for newer disclosures.",
+      "Preserve old evidence and its reporting period; do not overwrite history.",
+      "Record publication, observation and retrieval times separately for new observations.",
+      "Review hypotheses independently; do not treat a source's general context as proof.",
+      "Validate references and review proposed changes before merging into your repository."
+    ]
+  }
+}

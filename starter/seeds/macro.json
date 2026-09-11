@@ -1,0 +1,291 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "macro",
+  "title": "Macro transmission seed",
+  "scope": "US and Indian monetary-policy pathways, plus oil-to-gasoline costs. A small structural map, not comprehensive global macro coverage.",
+  "reviewed_at": "2026-09-11",
+  "license": "MIT — original topology and summaries only; linked sources retain their own terms",
+  "limitations": [
+    "Structural research starting point; no current prices, financial statements or live alerts.",
+    "Source review date is not an observation date or proof of current relationship validity.",
+    "Documented means supported by the cited source in its stated context, not independently audited or predictive.",
+    "Hypotheses require additional evidence; they must not be promoted automatically."
+  ],
+  "nodes": [
+    {
+      "id": "macro:fed",
+      "label": "Federal Reserve",
+      "type": "institution",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in Federal Reserve, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:fed-policy",
+      "label": "US policy-rate stance",
+      "type": "policy",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in US policy-rate stance, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:credit",
+      "label": "US borrowing conditions",
+      "type": "driver",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in US borrowing conditions, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:households",
+      "label": "US household spending",
+      "type": "driver",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in US household spending, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:capex",
+      "label": "US business investment",
+      "type": "driver",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in US business investment, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:inflation",
+      "label": "US inflation",
+      "type": "driver",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What has changed in US inflation, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:oil",
+      "label": "Crude oil costs",
+      "type": "commodity",
+      "source_ids": [
+        "eia"
+      ],
+      "research_question": "What has changed in Crude oil costs, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:gasoline",
+      "label": "US gasoline prices",
+      "type": "driver",
+      "source_ids": [
+        "eia"
+      ],
+      "research_question": "What has changed in US gasoline prices, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:rbi",
+      "label": "Reserve Bank of India",
+      "type": "institution",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What has changed in Reserve Bank of India, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:repo",
+      "label": "India repo policy",
+      "type": "policy",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What has changed in India repo policy, and what evidence supports the change?",
+      "observations": []
+    },
+    {
+      "id": "macro:lending",
+      "label": "Indian bank lending rates",
+      "type": "driver",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What has changed in Indian bank lending rates, and what evidence supports the change?",
+      "observations": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "macro:fed",
+      "to": "macro:fed-policy",
+      "relation": "sets_policy",
+      "mechanism": "The Fed uses its policy-rate tools to influence financial conditions.",
+      "status": "documented",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "What changed in the latest policy decision and guidance?",
+      "id": "macro:edge-01",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:fed-policy",
+      "to": "macro:credit",
+      "relation": "influences",
+      "mechanism": "Policy-rate changes can transmit to household and business borrowing costs.",
+      "status": "documented",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "Have actual financing costs moved with the policy stance?",
+      "id": "macro:edge-02",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:credit",
+      "to": "macro:households",
+      "relation": "influences",
+      "mechanism": "Borrowing costs influence household spending decisions, alongside other factors.",
+      "status": "documented",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "Is spending responding, and over what lag?",
+      "id": "macro:edge-03",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:credit",
+      "to": "macro:capex",
+      "relation": "influences",
+      "mechanism": "Financing conditions affect firms' incentives to invest.",
+      "status": "documented",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "Do investment plans confirm the proposed financing channel?",
+      "id": "macro:edge-04",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:households",
+      "to": "macro:inflation",
+      "relation": "may_affect",
+      "mechanism": "Demand changes can affect inflation; the sign and size depend on supply and other conditions.",
+      "status": "documented",
+      "source_ids": [
+        "fed"
+      ],
+      "research_question": "Is the observed inflation change demand-driven?",
+      "id": "macro:edge-05",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:oil",
+      "to": "macro:gasoline",
+      "relation": "input_cost",
+      "mechanism": "Crude oil costs contribute to gasoline prices, alongside refining, distribution and taxes.",
+      "status": "documented",
+      "source_ids": [
+        "eia"
+      ],
+      "research_question": "How much of an oil move has reached pump prices?",
+      "id": "macro:edge-06",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:gasoline",
+      "to": "macro:households",
+      "relation": "may_affect",
+      "mechanism": "A fuel-cost change may alter household spending elsewhere; this pack does not establish its size.",
+      "status": "hypothesis",
+      "source_ids": [
+        "eia",
+        "fed"
+      ],
+      "research_question": "Is there household-level evidence of a spending substitution?",
+      "id": "macro:edge-07",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:rbi",
+      "to": "macro:repo",
+      "relation": "sets_policy",
+      "mechanism": "The repo rate is a monetary-policy instrument of the RBI framework.",
+      "status": "documented",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "What is the latest published decision, rather than the last cached rate?",
+      "id": "macro:edge-08",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "from": "macro:repo",
+      "to": "macro:lending",
+      "relation": "influences",
+      "mechanism": "Repo-linked lending can transmit policy changes; other benchmarks and reset terms also matter.",
+      "status": "documented",
+      "source_ids": [
+        "rbi"
+      ],
+      "research_question": "Which loans are repo-linked and when do they reset?",
+      "id": "macro:edge-09",
+      "reviewed_at": "2026-09-11"
+    }
+  ],
+  "sources": [
+    {
+      "id": "fed",
+      "title": "Federal Reserve — How monetary policy affects inflation and employment",
+      "url": "https://www.federalreserve.gov/faqs/money_12856.htm",
+      "publisher": "Federal Reserve Board",
+      "locator": "Main explanation of interest rates, credit, spending and inflation",
+      "basis": "General transmission mechanism; not a forecast or current policy reading.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "eia",
+      "title": "EIA — Gasoline price fluctuations",
+      "url": "https://www.eia.gov/energyexplained/gasoline/price-fluctuations.php",
+      "publisher": "US Energy Information Administration",
+      "locator": "Crude oil prices and retail gasoline prices",
+      "basis": "General cost relationship, not current oil or pump prices.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    },
+    {
+      "id": "rbi",
+      "title": "RBI — Monetary policy framework and transmission",
+      "url": "https://rbi.org.in/scripts/PublicationsView.aspx?Id=18086",
+      "publisher": "Reserve Bank of India",
+      "locator": "Monetary policy objectives, repo instrument and external benchmark lending",
+      "basis": "Institutional framework; verify current rules and lending terms separately.",
+      "reviewed_at": "2026-09-11",
+      "review_after_days": 90
+    }
+  ],
+  "update_plan": {
+    "cadence": "user_selected",
+    "network_access": "not_implemented",
+    "instructions": [
+      "Re-open the linked primary sources and look for newer disclosures.",
+      "Preserve old evidence and its reporting period; do not overwrite history.",
+      "Record publication, observation and retrieval times separately for new observations.",
+      "Review hypotheses independently; do not treat a source's general context as proof.",
+      "Validate references and review proposed changes before merging into your repository."
+    ]
+  }
+}
