@@ -4,6 +4,8 @@
 
 Static HTML, CSS and JavaScript. No build step, external font dependency, analytics tracker, API keys or backend. The graph diagram is illustrative. The configuration builder runs entirely in the browser; it does not transmit the research question or activate a schedule. Contact buttons use email or public GitHub issues.
 
+`.nojekyll` keeps the documentation and JSON files available at their exact paths without a Jekyll transformation.
+
 ## Local preview
 
 ```sh
