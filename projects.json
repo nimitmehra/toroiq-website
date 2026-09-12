@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "updated_at": "2026-09-11",
+  "updated_at": "2026-09-12",
   "name": "toroIQ",
   "website": "https://toroiq.com/",
   "scope": "Independent research project; not a hosted financial data service.",
@@ -72,7 +72,7 @@
       "description": "Personal research project covering protocols, liquidity, adoption and incentives.",
       "repository": null,
       "viewer": null,
-      "access_scope": "No public full pipeline or dataset. Fictional starter example only.",
+      "access_scope": "Source-linked structural seed available; full private pipeline and research dataset are not released.",
       "seed": {
         "url": "https://toroiq.com/starter/seeds/crypto.json",
         "version": "0.1.0",
@@ -80,6 +80,31 @@
         "nodes": 10,
         "relationships": 12
       }
+    },
+    {
+      "id": "mf",
+      "name": "India mutual fund graph",
+      "status": "seed_available_private_tracker",
+      "description": "Indian mutual fund research covering plan identity, expenses, debt exposures and passive benchmarks.",
+      "repository": null,
+      "viewer": null,
+      "access_scope": "Public structural seed; the existing MF-Tracker database and allocation research are separate. No public full graph viewer is linked.",
+      "seed": {
+        "url": "https://toroiq.com/starter/seeds/mf.json",
+        "version": "0.1.0",
+        "reviewed_at": "2026-09-12",
+        "nodes": 12,
+        "relationships": 12
+      }
     }
-  ]
+  ],
+  "worked_example": {
+    "url": "https://toroiq.com/example.html",
+    "json": "https://toroiq.com/examples/management-expectations.json",
+    "csv": "https://toroiq.com/examples/management-expectations.csv",
+    "mode": "historical_worked_example",
+    "coverage": "Microsoft AI-capacity expectations, January\u2013July 2025",
+    "reviewed_at": "2026-09-12",
+    "automated_research": false
+  }
 }

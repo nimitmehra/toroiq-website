@@ -24,8 +24,8 @@ with sync_playwright() as p:
     page.goto(BASE, wait_until='networkidle')
     page.wait_for_function('document.querySelector("#focus").options.length > 1')
     assert page.locator('h1').count() == 1
-    assert page.locator('.project-card').count() == 4
-    assert page.locator('.seed-download').count() == 4
+    assert page.locator('.project-card').count() == 5
+    assert page.locator('.seed-download').count() == 5
     ids = page.locator('[id]').evaluate_all('(els) => els.map(e => e.id)')
     assert len(ids) == len(set(ids))
     for href in page.locator('a[href]').evaluate_all('(els) => els.map(e => e.getAttribute("href"))'):
@@ -59,7 +59,7 @@ with sync_playwright() as p:
     page.emulate_media(reduced_motion='no-preference')
     page.wait_for_function('!document.querySelector("#motion-toggle").disabled')
 
-    for market in ['macro', 'nse', 'us', 'crypto']:
+    for market in ['macro', 'nse', 'us', 'crypto', 'mf']:
         page.locator(f'[data-market="{market}"]').click()
         assert page.locator('#market').input_value() == market
         assert page.locator(f'[data-market="{market}"]').get_attribute('aria-pressed') == 'true'
@@ -109,7 +109,7 @@ with sync_playwright() as p:
     fallback.goto(BASE)
     assert fallback.locator('noscript a').is_visible()
     assert not fallback.locator('#config-form').is_visible()
-    assert fallback.locator('.seed-download').count() == 4
+    assert fallback.locator('.seed-download').count() == 5
     # Every public machine-readable resource must parse from the actual server.
     for path in ['projects.json', 'starter/seeds/index.json', 'starter/seed.schema.json', 'starter/seed.config.example.json']:
         response = context.request.get(BASE.rstrip('/') + '/' + path)
@@ -117,4 +117,4 @@ with sync_playwright() as p:
         response.json()
     assert errors == [], errors
     browser.close()
-print('PASS: animation movement/pause/reduced-motion/offscreen; four seed/config downloads and CLI roundtrips; six viewport widths; no-JS, links and browser errors')
+print('PASS: animation movement/pause/reduced-motion/offscreen; five seed/config downloads and CLI roundtrips; six viewport widths; no-JS, links and browser errors')

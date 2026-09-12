@@ -1,8 +1,8 @@
 {
   "schema_version": "0.2.0",
   "seed_version": "0.1.0",
-  "reviewed_at": "2026-09-11",
-  "license": "MIT — original metadata and topology only; source documents excluded",
+  "reviewed_at": "2026-09-12",
+  "license": "MIT \u2014 original metadata and topology only; source documents excluded",
   "graph_schema": "https://toroiq.com/starter/seed.schema.json",
   "initializer": "https://github.com/nimitmehra/toroiq-website/blob/main/starter/seed.py",
   "network_access": false,
@@ -221,6 +221,67 @@
         {
           "id": "crypto:liquidation",
           "label": "Borrow-position liquidation risk"
+        }
+      ]
+    },
+    {
+      "market": "mf",
+      "title": "India mutual fund research seed",
+      "scope": "Indian mutual fund scheme and plan identity, expenses, debt risks and passive benchmarks. A conceptual research map; no named fund selection, NAV feed or personal allocation.",
+      "url": "https://toroiq.com/starter/seeds/mf.json",
+      "node_count": 12,
+      "edge_count": 12,
+      "documented_count": 11,
+      "hypothesis_count": 1,
+      "source_count": 3,
+      "focus_options": [
+        {
+          "id": "mf:scheme",
+          "label": "Mutual fund scheme"
+        },
+        {
+          "id": "mf:direct",
+          "label": "Direct plan"
+        },
+        {
+          "id": "mf:regular",
+          "label": "Regular plan"
+        },
+        {
+          "id": "mf:portfolio",
+          "label": "Underlying portfolio"
+        },
+        {
+          "id": "mf:expenses",
+          "label": "Plan expenses"
+        },
+        {
+          "id": "mf:returns",
+          "label": "Plan returns"
+        },
+        {
+          "id": "mf:debt",
+          "label": "Debt securities"
+        },
+        {
+          "id": "mf:rates",
+          "label": "Market interest rates"
+        },
+        {
+          "id": "mf:nav",
+          "label": "Scheme NAV"
+        },
+        {
+          "id": "mf:credit",
+          "label": "Issuer credit risk"
+        },
+        {
+          "id": "mf:index-fund",
+          "label": "Index fund"
+        },
+        {
+          "id": "mf:benchmark",
+          "label": "Benchmark index"
         }
       ]
     }

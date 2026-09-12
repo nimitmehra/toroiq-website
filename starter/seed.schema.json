@@ -34,7 +34,8 @@
         "macro",
         "nse",
         "us",
-        "crypto"
+        "crypto",
+        "mf"
       ]
     },
     "title": {

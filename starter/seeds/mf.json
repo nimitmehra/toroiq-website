@@ -1,0 +1,340 @@
+{
+  "schema_version": "0.2.0",
+  "seed_version": "0.1.0",
+  "mode": "seed",
+  "market": "mf",
+  "title": "India mutual fund research seed",
+  "scope": "Indian mutual fund scheme and plan identity, expenses, debt risks and passive benchmarks. A conceptual research map; no named fund selection, NAV feed or personal allocation.",
+  "reviewed_at": "2026-09-12",
+  "license": "MIT \u2014 original topology and summaries only; linked sources retain their own terms",
+  "limitations": [
+    "Structural research starting point; no current prices, financial statements or live alerts.",
+    "Source review date is not an observation date or proof of current relationship validity.",
+    "Documented means supported by the cited source in its stated context, not independently audited or predictive.",
+    "Hypotheses require additional evidence; they must not be promoted automatically.",
+    "No private MF-Tracker reports, holdings, account data, tax lots or allocations are included. Scheme, plan and option must be identified before adding observations."
+  ],
+  "nodes": [
+    {
+      "id": "mf:scheme",
+      "label": "Mutual fund scheme",
+      "type": "fund",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare mutual fund scheme consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:direct",
+      "label": "Direct plan",
+      "type": "plan",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare direct plan consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:regular",
+      "label": "Regular plan",
+      "type": "plan",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare regular plan consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:portfolio",
+      "label": "Underlying portfolio",
+      "type": "portfolio",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare underlying portfolio consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:expenses",
+      "label": "Plan expenses",
+      "type": "metric",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare plan expenses consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:returns",
+      "label": "Plan returns",
+      "type": "metric",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "What evidence is needed to compare plan returns consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:debt",
+      "label": "Debt securities",
+      "type": "asset_class",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "What evidence is needed to compare debt securities consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:rates",
+      "label": "Market interest rates",
+      "type": "driver",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "What evidence is needed to compare market interest rates consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:nav",
+      "label": "Scheme NAV",
+      "type": "metric",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "What evidence is needed to compare scheme nav consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:credit",
+      "label": "Issuer credit risk",
+      "type": "risk",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "What evidence is needed to compare issuer credit risk consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:index-fund",
+      "label": "Index fund",
+      "type": "fund_category",
+      "source_ids": [
+        "tracking"
+      ],
+      "research_question": "What evidence is needed to compare index fund consistently across dates and plans?",
+      "observations": []
+    },
+    {
+      "id": "mf:benchmark",
+      "label": "Benchmark index",
+      "type": "index",
+      "source_ids": [
+        "tracking"
+      ],
+      "research_question": "What evidence is needed to compare benchmark index consistently across dates and plans?",
+      "observations": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "mf:edge-01",
+      "from": "mf:scheme",
+      "to": "mf:direct",
+      "relation": "offers_plan",
+      "mechanism": "A scheme can offer a direct plan.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-02",
+      "from": "mf:scheme",
+      "to": "mf:regular",
+      "relation": "offers_plan",
+      "mechanism": "A scheme can offer a regular plan.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-03",
+      "from": "mf:direct",
+      "to": "mf:portfolio",
+      "relation": "shares_portfolio",
+      "mechanism": "Direct and regular plans of a scheme share its underlying portfolio.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-04",
+      "from": "mf:regular",
+      "to": "mf:portfolio",
+      "relation": "shares_portfolio",
+      "mechanism": "The regular plan has the same underlying portfolio as the direct plan of that scheme.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-05",
+      "from": "mf:direct",
+      "to": "mf:expenses",
+      "relation": "has_cost_structure",
+      "mechanism": "Direct plans exclude distributor commissions.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-06",
+      "from": "mf:regular",
+      "to": "mf:expenses",
+      "relation": "has_cost_structure",
+      "mechanism": "Regular-plan expenses include distributor commissions.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-07",
+      "from": "mf:expenses",
+      "to": "mf:returns",
+      "relation": "affects_net_return",
+      "mechanism": "Different expenses can produce different plan returns on the same underlying portfolio.",
+      "status": "documented",
+      "source_ids": [
+        "plans"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-08",
+      "from": "mf:rates",
+      "to": "mf:debt",
+      "relation": "affects_valuation",
+      "mechanism": "Debt security prices generally move inversely to market interest rates; sensitivity varies.",
+      "status": "documented",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-09",
+      "from": "mf:credit",
+      "to": "mf:debt",
+      "relation": "affects_valuation",
+      "mechanism": "Issuer default or changing creditworthiness can affect debt security values.",
+      "status": "documented",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-10",
+      "from": "mf:debt",
+      "to": "mf:nav",
+      "relation": "contributes_to_value",
+      "mechanism": "Debt holdings transmit changes in security values into a scheme NAV.",
+      "status": "documented",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-11",
+      "from": "mf:index-fund",
+      "to": "mf:benchmark",
+      "relation": "tracks",
+      "mechanism": "An index fund seeks to follow its benchmark; tracking variability needs a defined measurement period.",
+      "status": "documented",
+      "source_ids": [
+        "tracking"
+      ],
+      "research_question": "Does the selected scheme document support this relationship for the relevant plan and period?",
+      "reviewed_at": "2026-09-12"
+    },
+    {
+      "id": "mf:edge-12",
+      "from": "mf:rates",
+      "to": "mf:returns",
+      "relation": "may_affect",
+      "mechanism": "A change in market rates may affect fund returns through its actual debt exposure. Fund-level evidence is needed.",
+      "status": "hypothesis",
+      "source_ids": [
+        "risk"
+      ],
+      "research_question": "What are the dated scheme documents and holdings that establish this exposure?",
+      "reviewed_at": "2026-09-12"
+    }
+  ],
+  "sources": [
+    {
+      "id": "plans",
+      "title": "SEBI Investor \u2014 Regular and direct mutual funds",
+      "url": "https://investor.sebi.gov.in/regular_and_direct_mutual_funds.html",
+      "publisher": "SEBI",
+      "locator": "Understanding regular and direct plans; plan cost structures",
+      "basis": "General plan identity and expense differences; not a fund recommendation.",
+      "reviewed_at": "2026-09-12",
+      "review_after_days": 90
+    },
+    {
+      "id": "risk",
+      "title": "AMFI \u2014 Risks in mutual funds",
+      "url": "https://www.amfiindia.com/investor/knowledge-center-info?zoneName=riskInMutualFunds",
+      "publisher": "Association of Mutual Funds in India",
+      "locator": "Standard risk factors; interest-rate and credit risk sections",
+      "basis": "General risks and transmission mechanisms; not current rates or scheme holdings.",
+      "reviewed_at": "2026-09-12",
+      "review_after_days": 90
+    },
+    {
+      "id": "tracking",
+      "title": "SEBI Investor \u2014 Understanding tracking error",
+      "url": "https://investor.sebi.gov.in/understanding_Tracking_error.html",
+      "publisher": "SEBI",
+      "locator": "Meaning of tracking error; benchmark tracking",
+      "basis": "Benchmark relationship only. Distinguish return gap from variability; the page uses inconsistent terminology in its numerical examples.",
+      "reviewed_at": "2026-09-12",
+      "review_after_days": 90
+    }
+  ],
+  "update_plan": {
+    "cadence": "user_selected",
+    "network_access": "not_implemented",
+    "instructions": [
+      "Re-open the linked primary sources and look for newer disclosures.",
+      "Preserve old evidence and its reporting period; do not overwrite history.",
+      "Record publication, observation and retrieval times separately for new observations.",
+      "Review hypotheses independently; do not treat a source's general context as proof.",
+      "Validate references and review proposed changes before merging into your repository."
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "example_id": "msft-ai-capacity-2025",
+  "mode": "historical_worked_example",
+  "reviewed_at": "2026-09-12",
+  "research_question": "Can we assume Microsoft’s AI capacity catches up with near-term demand by June 2025?",
+  "records": [
+    {
+      "id": "msft-capacity-2025-01-29",
+      "published_at": "2025-01-29",
+      "period": "FY2025 Q2",
+      "statement": "Management expected AI capacity to roughly match near-term demand by the end of FY2025.",
+      "horizon": "End of FY2025 (June 2025)",
+      "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q2",
+      "source_locator": "Amy Hood prepared remarks: Azure outlook; search for “roughly in line”.",
+      "entity": "Microsoft",
+      "ticker": "MSFT",
+      "topic": "AI capacity versus demand",
+      "record_type": "management_expectation",
+      "speaker": "Amy Hood, CFO",
+      "reviewed_at": "2026-09-12",
+      "summary_type": "paraphrase",
+      "outcome_status": "not_assessed"
+    },
+    {
+      "id": "msft-capacity-2025-04-30",
+      "published_at": "2025-04-30",
+      "period": "FY2025 Q3",
+      "statement": "Management revised its outlook to include some AI capacity constraints beyond June.",
+      "horizon": "Beyond June 2025",
+      "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q3",
+      "source_locator": "Amy Hood prepared remarks: Azure capacity outlook; search for “constraints beyond June”.",
+      "entity": "Microsoft",
+      "ticker": "MSFT",
+      "topic": "AI capacity versus demand",
+      "record_type": "management_expectation",
+      "speaker": "Amy Hood, CFO",
+      "reviewed_at": "2026-09-12",
+      "summary_type": "paraphrase",
+      "outcome_status": "not_assessed"
+    },
+    {
+      "id": "msft-capacity-2025-07-30",
+      "published_at": "2025-07-30",
+      "period": "FY2025 Q4",
+      "statement": "Management expected capacity constraints to continue through the first half of the next fiscal year.",
+      "horizon": "First half of FY2026 (July–December 2025)",
+      "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q4",
+      "source_locator": "Amy Hood outlook: Intelligent Cloud / Azure; search for “capacity constrained through”.",
+      "entity": "Microsoft",
+      "ticker": "MSFT",
+      "topic": "AI capacity versus demand",
+      "record_type": "management_expectation",
+      "speaker": "Amy Hood, CFO",
+      "reviewed_at": "2026-09-12",
+      "summary_type": "paraphrase",
+      "outcome_status": "not_assessed"
+    }
+  ],
+  "assessment": {
+    "status": "research_assumption_requires_revision",
+    "interpretation": "The June catch-up assumption should be revisited: later management statements describe continuing constraints. These are changing expectations, not verified delivery outcomes.",
+    "depends_on": [
+      "msft-capacity-2025-01-29",
+      "msft-capacity-2025-04-30",
+      "msft-capacity-2025-07-30"
+    ],
+    "not_established": [
+      "Whether capacity actually caught up by a later date.",
+      "The amount of lost or deferred revenue.",
+      "Which suppliers received incremental orders."
+    ],
+    "next_check": "At the next agreed disclosure, compare the capacity outlook and any reported delivery evidence with this history."
+  },
+  "delivery": {
+    "formats": [
+      "HTML",
+      "CSV",
+      "JSON"
+    ],
+    "workflow": "Source selection, extraction and interpretation require research review. The included script validates and renders reviewed records; it does not discover or fetch new disclosures.",
+    "current_service_status": "Example available; custom trial scope and cadence agreed individually. No hosted feed or delivery SLA."
+  }
+}

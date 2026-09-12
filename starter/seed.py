@@ -12,7 +12,7 @@ import sys
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent
-MARKETS = ("macro", "nse", "us", "crypto")
+MARKETS = ("macro", "nse", "us", "crypto", "mf")
 SCHEMA_VERSION = "0.2.0"
 SEED_VERSION = "0.1.0"
 
@@ -121,7 +121,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "seed.config.example.json")
     parser.add_argument("--output", type=Path, help="New directory only; existing directories are rejected")
-    parser.add_argument("--validate-only", action="store_true", help="Validate all four bundled seeds without writing files")
+    parser.add_argument("--validate-only", action="store_true", help="Validate all five bundled seeds without writing files")
     args = parser.parse_args()
     try:
         if args.validate_only:

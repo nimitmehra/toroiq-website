@@ -10,10 +10,19 @@
 - [NSE seed](https://toroiq.com/starter/seeds/nse.json): 10 nodes, 10 relationships; TCS, Infosys, HDFC Bank and dependencies.
 - [US seed](https://toroiq.com/starter/seeds/us.json): 10 nodes, 10 relationships; Microsoft, Amazon, NVIDIA, cloud and compute.
 - [Crypto seed](https://toroiq.com/starter/seeds/crypto.json): 10 nodes, 12 relationships; Ethereum, ETH, Aave, Circle and USDC.
+- [India mutual fund seed](https://toroiq.com/starter/seeds/mf.json): 12 nodes, 12 relationships; plans, expenses, debt risks and benchmarks.
 - [Seed schema](https://toroiq.com/starter/seed.schema.json): schema v0.2.0, seed v0.1.0.
 - [Starter and setup](https://github.com/nimitmehra/toroiq-website/tree/main/starter): Python 3.9+, no third-party runtime dependencies.
 - [Configuration](https://toroiq.com/starter/seed.config.example.json): market, focus IDs, neighbor hops, question and cadence.
 - [Update guide](https://toroiq.com/starter/UPDATE_GUIDE.md): review and extension instructions.
+
+## Worked research update
+
+- [Readable example](https://toroiq.com/example.html): changing Microsoft AI-capacity expectations across January–July 2025 disclosures.
+- [Reviewed example JSON](https://toroiq.com/examples/management-expectations.json): dated statements, primary-source pointers and a separate interpretation. This example uses its own schema v1.0.0, not the structural seed schema.
+- [Spreadsheet CSV](https://toroiq.com/examples/management-expectations.csv): the same reviewed statement records.
+
+Historical example only. Expectations are not verified delivery outcomes. Source review and interpretation are manual; there is no live feed or automatic disclosure monitoring.
 
 ## Initialize
 
@@ -25,7 +34,7 @@ The output directory must not exist. Outputs: graph.json, review-queue.json, res
 
 ## Evidence and freshness
 
-Source review date: 2026-09-11. Historical reports are identified in each source's title, basis and locator. Review date does not mean a document or relationship is current. No current prices, financial snapshots, positions or weights are included. A documented edge is supported by its cited source in context, not independently audited. A hypothesis is an unverified inference; its sources supply context, not proof. Read the originals before relying on either. Default 90-day review intervals are editorial reminders, not freshness guarantees.
+Source review dates: 2026-09-11 for the original four packs; 2026-09-12 for India mutual funds. Historical reports are identified in each source's title, basis and locator. Review date does not mean a document or relationship is current. No current prices, financial snapshots, positions or weights are included. A documented edge is supported by its cited source in context, not independently audited. A hypothesis is an unverified inference; its sources supply context, not proof. Read the originals before relying on either. Default 90-day review intervals are editorial reminders, not freshness guarantees.
 
 ## Boundaries
 

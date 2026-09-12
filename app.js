@@ -1,6 +1,7 @@
 'use strict';
 
 const examples = {
+  mf: {nodes: ['Fund mandate', 'Scheme disclosure', 'Fund exposure', 'Benchmark fit', 'Your fund research'], types: ['MANDATE', 'EVIDENCE TO REVIEW', 'BENCHMARK'], question: 'What changed in the fund exposure or the case for its category?', explanation: 'Compare dated disclosures, plan costs and benchmarks before revising an allocation view.'},
   macro: {nodes: ['Shipping disruption', 'Freight costs', 'Input costs', 'Operating margins', 'Your watchlist'], types: ['EVENT', 'OBSERVATION', 'EXPOSURE'], question: 'Which companies are exposed to higher input costs?', explanation: 'Follow a possible transmission path, then ask your agent to check the evidence.'},
   nse: {nodes: ['Capacity expansion', 'Company disclosure', 'Execution risk', 'Supplier exposure', 'Your NSE watchlist'], types: ['MANAGEMENT PLAN', 'EVIDENCE TO REVIEW', 'RELATIONSHIP'], question: 'Has a management commitment changed since last quarter?', explanation: 'Compare the original disclosure with new evidence before changing your thesis.'},
   us: {nodes: ['Customer spending', 'Quarterly filing', 'Revenue drivers', 'Supplier outlook', 'Your US watchlist'], types: ['BUSINESS DRIVER', 'EVIDENCE TO REVIEW', 'EXPOSURE'], question: 'Which supplier assumptions depend on this customer?', explanation: 'Keep the relationship explicit. A customer headline alone is not proof of supplier impact.'},

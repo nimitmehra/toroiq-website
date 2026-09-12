@@ -1,6 +1,6 @@
 # toroIQ research seed graphs
 
-Four small, source-linked starting graphs for you and your agent. Select a market, choose a focus and create a workspace you own.
+Five small, source-linked starting graphs for you and your agent. Select a market, choose a focus and create a workspace you own.
 
 **Structural research seeds, not live datasets.** Real entities, original short descriptions, primary-source references and explicit hypotheses. No current prices, generated financial observations, private tracker exports or portfolio information. Initialization makes no LLM calls, web requests, notifications or schedules.
 
@@ -11,9 +11,10 @@ Four small, source-linked starting graphs for you and your agent. Select a marke
 | [Macro](seeds/macro.json) | 11 | 9 | US/India policy transmission; oil and gasoline costs |
 | [NSE](seeds/nse.json) | 10 | 10 | TCS, Infosys, HDFC Bank; IT services, FX and lending |
 | [US](seeds/us.json) | 10 | 10 | Microsoft, Amazon, NVIDIA; cloud and infrastructure |
+| [India mutual funds](seeds/mf.json) | 12 | 12 | Scheme/plan identity, expenses, debt risks and benchmarks |
 | [Crypto](seeds/crypto.json) | 10 | 12 | Ethereum, ETH, Aave, Circle/USDC; fees and collateral |
 
-Seed release **0.1.0**, graph schema **0.2.0**, source review **2026-09-11**. Review dates do not make historical reports current. These are narrow starting maps, not full-market coverage. See [catalog](seeds/index.json) for IDs and download URLs.
+Seed release **0.1.0**, graph schema **0.2.0**, source review **2026-09-11** for the original four packs and **2026-09-12** for India mutual funds. Review dates do not make historical reports current. These are narrow starting maps, not full-market coverage. See [catalog](seeds/index.json) for IDs and download URLs.
 
 ## Quick start
 
